@@ -5,37 +5,37 @@ const courses = [
   {
     icon: Monitor,
     title: "Digital Literacy Basics",
-    description: "Learn essential computer skills and digital tools for everyday use",
+    description: "Learn how to use computers, navigate operating systems, manage files and folders, and become comfortable with everyday digital tools. This foundational course ensures every learner can confidently operate in a digital environment.",
     gradient: "gradient-blue",
   },
   {
     icon: Shield,
     title: "Internet Safety & Cybersecurity",
-    description: "Stay safe online with practical security awareness training",
+    description: "Understand how to stay safe online — from recognizing phishing scams and creating strong passwords to understanding privacy settings and protecting personal information on the internet.",
     gradient: "gradient-orange",
   },
   {
     icon: Mail,
     title: "Email & Communication Skills",
-    description: "Master professional digital communication for school and work",
+    description: "Master the art of professional digital communication. Learn to write effective emails, use collaboration tools like Google Workspace, and communicate clearly in academic and professional settings.",
     gradient: "gradient-green",
   },
   {
     icon: Code,
     title: "Coding & Logical Thinking",
-    description: "Build problem-solving skills through beginner-friendly programming",
+    description: "Begin your programming journey with beginner-friendly coding lessons. Develop logical thinking and problem-solving abilities through hands-on exercises in block-based and text-based programming.",
     gradient: "gradient-blue",
   },
   {
     icon: Brain,
-    title: "Introduction to AI",
-    description: "Understand artificial intelligence and its real-world applications",
+    title: "Introduction to Artificial Intelligence",
+    description: "Discover what AI is, how it works, and where it is used in the real world. Explore topics like machine learning, chatbots, and smart assistants in an easy-to-understand, non-technical format.",
     gradient: "gradient-orange",
   },
   {
     icon: Briefcase,
     title: "Digital Careers & Future Skills",
-    description: "Explore career paths in the technology industry",
+    description: "Explore the wide range of career paths available in the technology industry. Learn about freelancing, digital marketing, data entry, graphic design, and other skills that open doors to new opportunities.",
     gradient: "gradient-green",
   },
 ];
@@ -45,31 +45,35 @@ const CoursesSection = () => {
     <section id="courses" className="py-20 md:py-28">
       <div className="container mx-auto px-4">
         <AnimatedSection>
-          <div className="text-center mb-16">
-            <span className="inline-block px-3 py-1 rounded-full bg-accent/10 text-accent text-sm font-semibold mb-4">
+          <div className="text-center mb-6">
+            <span className="inline-block px-4 py-1.5 rounded-full bg-accent/10 text-accent text-sm font-semibold mb-4">
               Curriculum
             </span>
             <h2 className="text-3xl md:text-5xl font-heading font-bold text-foreground mb-6">
               What We <span className="text-gradient">Teach</span>
             </h2>
-            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-              Our carefully designed curriculum covers essential digital skills for the modern world.
-            </p>
           </div>
         </AnimatedSection>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <AnimatedSection delay={0.1}>
+          <p className="text-muted-foreground text-lg max-w-3xl mx-auto text-center mb-14 leading-relaxed">
+            Our carefully designed curriculum covers essential digital skills for the modern world. Each course
+            is structured with video lessons, practice materials, and real-world examples to ensure effective learning.
+            All content is beginner-friendly and requires no prior technical knowledge.
+          </p>
+        </AnimatedSection>
+
+        <div className="space-y-5 max-w-3xl mx-auto">
           {courses.map((course, index) => (
-            <AnimatedSection key={course.title} delay={index * 0.1}>
-              <div className="group relative p-6 rounded-2xl border border-border bg-card hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden">
-                <div className="absolute top-0 left-0 right-0 h-1 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className={`h-full ${course.gradient}`} />
-                </div>
-                <div className={`w-12 h-12 rounded-xl ${course.gradient} flex items-center justify-center mb-4`}>
+            <AnimatedSection key={course.title} delay={index * 0.08}>
+              <div className="group flex items-start gap-5 p-6 rounded-2xl border border-border bg-card hover:shadow-lg transition-all duration-300">
+                <div className={`w-12 h-12 rounded-xl ${course.gradient} flex items-center justify-center shrink-0 mt-1`}>
                   <course.icon className="text-primary-foreground" size={22} />
                 </div>
-                <h3 className="text-lg font-heading font-bold text-foreground mb-2">{course.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{course.description}</p>
+                <div>
+                  <h3 className="text-lg font-heading font-bold text-foreground mb-2">{course.title}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">{course.description}</p>
+                </div>
               </div>
             </AnimatedSection>
           ))}
