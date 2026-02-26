@@ -70,12 +70,6 @@ const HeroSection = () => {
               <ArrowRight className="ml-1" size={20} />
             </Button>
           </a>
-          <a href={MATERIALS_LINK} target="_blank" rel="noopener noreferrer">
-            <Button variant="hero-outline" size="xl" className="w-full sm:w-auto">
-              <Play size={20} className="mr-1" />
-              Access Free Learning Materials
-            </Button>
-          </a>
         </motion.div>
 
         {/* Feature highlights */}
