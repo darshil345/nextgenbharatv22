@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ArrowRight, Play, GraduationCap, Lightbulb, Rocket } from "lucide-react";
 
-const VOLUNTEER_LINK = "https://docs.google.com/forms/d/e/1FAIpQLSfLMXJhgmZi3CZ7ADjJA3MQuy51wJ-6eaTSH1hJOLHFd2pyQg/viewform?usp=header";
+const VOLUNTEER_LINK = "https://form.typeform.com/to/FULWtaQY";
 const MATERIALS_LINK = "https://docs.google.com/document/d/12HWtN1p2tmZCvUnW7LWhnf22VYYpE-TmltEAbOqZejY/edit?usp=drivesdk";
 
 const HeroSection = () => {

@@ -2,7 +2,7 @@ import AnimatedSection from "@/components/AnimatedSection";
 import { Button } from "@/components/ui/button";
 import { Heart, ArrowRight, CheckCircle } from "lucide-react";
 
-const VOLUNTEER_LINK = "https://docs.google.com/forms/d/e/1FAIpQLSfLMXJhgmZi3CZ7ADjJA3MQuy51wJ-6eaTSH1hJOLHFd2pyQg/viewform?usp=header";
+const VOLUNTEER_LINK = "https://form.typeform.com/to/FULWtaQY";
 
 const benefits = [
   "Gain valuable teaching and mentoring experience",
