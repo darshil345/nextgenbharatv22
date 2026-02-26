@@ -80,6 +80,12 @@ const COURSE_1_PARTS: Part[] = [
           "Data Backup",
           "Cloud Storage Basics",
         ],
+        links: [
+          {
+            label: "File & System Management Notes",
+            url: "https://docs.google.com/document/d/1ys94WN7W2BXHh6CPbSM7AcSEJt85mPk9Magl4NyjWmE/edit?usp=sharing",
+          },
+        ],
       },
       {
         title: "Internet Fundamentals",
@@ -89,6 +95,12 @@ const COURSE_1_PARTS: Part[] = [
           "Safe Browsing",
           "Effective Online Research",
         ],
+        links: [
+          {
+            label: "Internet Fundamentals Notes",
+            url: "https://docs.google.com/document/d/1LmsG0g_nFCusy9MJIDmCs-FCb36H25_2K8StngQyTOM/edit?usp=sharing",
+          },
+        ],
       },
       {
         title: "Productivity Tools",
@@ -97,6 +109,12 @@ const COURSE_1_PARTS: Part[] = [
           "Presentation Tools",
           "Spreadsheets Basics",
           "Cloud Collaboration",
+        ],
+        links: [
+          {
+            label: "Productivity Tools Notes",
+            url: "https://docs.google.com/document/d/12eOovbwCwoxLfFo0RYtaRXg69a9igA61YdgSmRwk634/edit?usp=sharing",
+          },
         ],
       },
       {
