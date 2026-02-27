@@ -125,10 +125,22 @@ const COURSE_1_PARTS: Part[] = [
           "Logic & Basic Structures",
           "Beginner Projects",
         ],
+        links: [
+          {
+            label: "Introduction to Coding Notes",
+            url: "https://docs.google.com/document/d/1tc6mMw-r65j7K7Ccl6RPksCTp-8SooS2UOktOEVe14A/edit?usp=sharing",
+          },
+        ],
       },
       {
         title: "Introduction to Artificial Intelligence",
         topics: ["What is AI", "AI in Daily Life", "Data & Algorithms", "AI Benefits & Risks"],
+        links: [
+          {
+            label: "Introduction to AI Notes",
+            url: "https://docs.google.com/document/d/1uQd-9DQzbVN-4vARP9vjC9JHyOoqIICxSGqKvaN7KqQ/edit?usp=sharing",
+          },
+        ],
       },
       {
         title: "Digital Safety Basics",
@@ -137,6 +149,12 @@ const COURSE_1_PARTS: Part[] = [
           "Phishing Awareness",
           "Safe Downloads",
           "Account Protection",
+        ],
+        links: [
+          {
+            label: "Digital Safety Basics Notes",
+            url: "https://docs.google.com/document/d/1vIrY6MlxvCwGEbhW3qoYc_Zgdbmu2pjTQlbC_hFH94k/edit?usp=sharing",
+          },
         ],
       },
     ],
