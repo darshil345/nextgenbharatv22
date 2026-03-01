@@ -32,7 +32,7 @@ interface Part {
 const COURSE_1_PARTS: Part[] = [
   {
     title: "Digital Skills",
-    tag: "Already Built – Textbook, Quiz, PPT",
+    
     modules: [
       {
         title: "Understanding Digital Skills",
