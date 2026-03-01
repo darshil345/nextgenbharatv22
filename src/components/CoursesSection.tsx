@@ -178,6 +178,12 @@ const COURSE_1_PARTS: Part[] = [
           "Facts vs Opinions",
           "Reliable vs Unreliable Sources",
         ],
+        links: [
+          {
+            label: "Understanding Information Notes",
+            url: "https://docs.google.com/document/d/1rxuNvKPS8-KKtmQTcIvgfYeagYhNsfh93A2vFdr5mUs/edit?usp=sharing",
+          },
+        ],
       },
       {
         title: "Research Skills",
@@ -185,6 +191,12 @@ const COURSE_1_PARTS: Part[] = [
           "Advanced Search Techniques",
           "Evaluating Sources",
           "Cross-Verification",
+        ],
+        links: [
+          {
+            label: "Research Skills Notes",
+            url: "https://docs.google.com/document/d/1Conx6-cMXKhNf4H4DjCHwTaIE6CGhvt5qjHjjhfWk5I/edit?usp=sharing",
+          },
         ],
       },
       {
@@ -194,10 +206,22 @@ const COURSE_1_PARTS: Part[] = [
           "Algorithm Awareness",
           "Bias & Misinformation",
         ],
+        links: [
+          {
+            label: "Media Awareness Notes",
+            url: "https://docs.google.com/document/d/1Q8jjjiBo68XT60FEFyntAvAbFZlk0buZSqGogU5FtS4/edit?usp=sharing",
+          },
+        ],
       },
       {
         title: "Ethical Content Usage",
         topics: ["Plagiarism", "Citation Basics", "Copyright Awareness"],
+        links: [
+          {
+            label: "Ethical Content Usage Notes",
+            url: "https://docs.google.com/document/d/19gDLAjfV-JJEY6KbQAA77bAJtBnTSLXM6Aoh-EJnwRU/edit?usp=sharing",
+          },
+        ],
       },
     ],
     assessment: {
