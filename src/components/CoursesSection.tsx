@@ -66,10 +66,6 @@ const COURSE_1_PARTS: Part[] = [
             label: "Computer & Device Fundamentals Notes",
             url: "https://docs.google.com/document/d/1eyWON85IkDCB-RRuVBdK5jkmWcdW3kR1vf29sAGsRT4/edit?usp=sharing",
           },
-          {
-            label: "Module 2 Quiz",
-            url: "https://form.typeform.com/to/ndpCKQ0d",
-          },
         ],
       },
       {
