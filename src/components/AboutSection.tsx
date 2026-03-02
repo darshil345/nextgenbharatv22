@@ -59,10 +59,10 @@ const AboutSection = () => {
           </div>
         </AnimatedSection>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {features.map((feature, index) => (
             <AnimatedSection key={feature.title} delay={index * 0.1}>
-              <div className="group p-6 rounded-2xl border border-border bg-card hover:shadow-lg transition-all duration-300 hover:-translate-y-1 h-full">
+              <div className={`group p-6 rounded-2xl border border-border bg-card hover:shadow-lg transition-all duration-300 hover:-translate-y-1 h-full ${index === features.length - 1 ? "md:col-span-2 md:max-w-md md:mx-auto" : ""}`}>
                 <div className="w-12 h-12 rounded-xl gradient-hero flex items-center justify-center mb-4">
                   <feature.icon className="text-primary-foreground" size={22} />
                 </div>
