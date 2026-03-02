@@ -1,5 +1,5 @@
 import AnimatedSection from "@/components/AnimatedSection";
-import { BookOpen, Users, Globe, Laptop, Heart, Award } from "lucide-react";
+import { BookOpen, Users, Globe, Heart, Award } from "lucide-react";
 
 const features = [
   {
@@ -16,11 +16,6 @@ const features = [
     icon: Globe,
     title: "Accessible to Everyone",
     description: "Geography and financial status should never be barriers to learning. Our platform is completely free, available online, and designed to work even on basic devices with limited internet connectivity.",
-  },
-  {
-    icon: Laptop,
-    title: "Recorded Video Lessons",
-    description: "All our lessons are pre-recorded so learners can study at their own pace. Pause, rewind, and revisit any topic as many times as needed until you feel confident.",
   },
   {
     icon: Heart,
@@ -53,8 +48,8 @@ const AboutSection = () => {
           <div className="max-w-3xl mx-auto text-center mb-16">
             <p className="text-muted-foreground text-lg leading-relaxed mb-4">
               NextGen Bharat V2 is built by students, for students. We provide structured, beginner-friendly courses
-              in digital skills, coding fundamentals, and artificial intelligence. Our recorded lessons allow learners
-              to study at their own pace and gain real confidence in technology.
+              in digital skills, coding fundamentals, and artificial intelligence — helping learners
+              gain real confidence in technology.
             </p>
             <p className="text-muted-foreground text-lg leading-relaxed">
               Founded with the belief that every young person in India deserves access to quality digital education,
