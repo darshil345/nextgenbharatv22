@@ -1,23 +1,16 @@
 import AnimatedSection from "@/components/AnimatedSection";
-import { PlayCircle, BookOpen, Users } from "lucide-react";
+import { BookOpen, Users } from "lucide-react";
 
 const steps = [
   {
     step: 1,
-    icon: PlayCircle,
-    title: "Watch Free Recorded Lessons",
-    description: "Start by browsing our library of video lessons covering digital literacy, coding, AI, and more. Each lesson is short, focused, and designed for beginners. Watch them anytime, anywhere — at your own pace.",
-    gradient: "gradient-blue",
-  },
-  {
-    step: 2,
     icon: BookOpen,
     title: "Practice with Guided Materials",
     description: "After watching lessons, reinforce what you learned with our guided worksheets, quizzes, and hands-on exercises. Practice is key to building real skills, and our materials make it easy and fun.",
     gradient: "gradient-orange",
   },
   {
-    step: 3,
+    step: 2,
     icon: Users,
     title: "Join the Community & Grow Your Skills",
     description: "Connect with fellow learners and volunteer mentors in our growing community. Ask questions, share your progress, get help when you're stuck, and celebrate your achievements together. Learning is better together.",
