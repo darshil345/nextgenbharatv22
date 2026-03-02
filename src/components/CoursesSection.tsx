@@ -49,7 +49,7 @@ const COURSE_1_PARTS: Part[] = [
           },
           {
             label: "Digital Skills Quiz",
-            url: "https://docs.google.com/forms/d/1PCndMsMLaLv1eLEyATqFPKKO9x_PEshRjpIMxqsAu-w/edit?usp=drivesdk",
+            url: "https://forms.gle/vt4WepDQnacRxuNQ8",
           },
         ],
       },
