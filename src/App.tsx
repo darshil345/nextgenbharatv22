@@ -19,7 +19,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter basename="/nextgenbharat">
+      <BrowserRouter basename={import.meta.env.MODE === "production" ? "/nextgenbharat" : ""}>
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/ai-olympiad" element={<OlympiadLayout />}>
