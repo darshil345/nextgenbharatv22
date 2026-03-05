@@ -1,0 +1,275 @@
+export interface Question {
+  question: string;
+  options: string[];
+  correct: number;
+  explanation: string;
+}
+
+// Map exercise IDs to sets of questions
+export const EXERCISE_QUESTIONS: Record<string, Question[]> = {
+  "lt-1": [
+    { question: "What comes next: 2, 4, 8, 16, ?", options: ["24", "32", "20", "28"], correct: 1, explanation: "Each number doubles. 16 × 2 = 32." },
+    { question: "Find the pattern: A, C, E, G, ?", options: ["H", "I", "J", "K"], correct: 1, explanation: "Every other letter of the alphabet: A(1), C(3), E(5), G(7), I(9)." },
+    { question: "What's next: 1, 1, 2, 3, 5, ?", options: ["7", "8", "6", "9"], correct: 1, explanation: "Fibonacci sequence: each number is the sum of the previous two. 3 + 5 = 8." },
+    { question: "Complete: 3, 6, 11, 18, ?", options: ["25", "27", "23", "29"], correct: 1, explanation: "Differences increase by 2: +3, +5, +7, +9 → 18 + 9 = 27." },
+    { question: "What's the missing number: 10, ?, 30, 40, 50", options: ["15", "20", "25", "22"], correct: 1, explanation: "Arithmetic sequence with common difference 10." },
+  ],
+  "lt-2": [
+    { question: "If all Bloops are Razzles, and all Razzles are Lazzles, then all Bloops are definitely:", options: ["Razzles only", "Lazzles", "Neither", "Cannot determine"], correct: 1, explanation: "By transitivity: Bloops → Razzles → Lazzles." },
+    { question: "If it rains, the ground is wet. The ground is wet. What can we conclude?", options: ["It rained", "It might have rained", "It didn't rain", "The sky is cloudy"], correct: 1, explanation: "The ground being wet doesn't guarantee rain (could be a sprinkler). We can only say it might have rained." },
+    { question: "A is taller than B. C is shorter than B. Who is shortest?", options: ["A", "B", "C", "Cannot determine"], correct: 2, explanation: "A > B > C, so C is the shortest." },
+    { question: "NOT (A AND B) is equivalent to:", options: ["NOT A AND NOT B", "NOT A OR NOT B", "A OR B", "A AND B"], correct: 1, explanation: "De Morgan's Law: NOT(A AND B) = NOT A OR NOT B." },
+    { question: "If X → Y is true, which is also true?", options: ["Y → X", "NOT Y → NOT X", "NOT X → NOT Y", "Y → NOT X"], correct: 1, explanation: "The contrapositive NOT Y → NOT X is logically equivalent to X → Y." },
+  ],
+  "lt-3": [
+    { question: "In a sequence where each term is the previous term × 2 + 1, starting from 1, what is the 5th term?", options: ["15", "31", "63", "27"], correct: 1, explanation: "1→3→7→15→31. Each time: ×2+1." },
+    { question: "If f(n) = f(n-1) + f(n-2) and f(1)=1, f(2)=3, what is f(5)?", options: ["11", "13", "15", "18"], correct: 0, explanation: "f(3)=4, f(4)=7, f(5)=11." },
+    { question: "A rule maps (2,3)→13, (4,1)→17, (3,3)→?", options: ["18", "15", "21", "12"], correct: 0, explanation: "Rule: a²+b² = 4+9=13, 16+1=17, 9+9=18." },
+    { question: "XOR of 1010 and 0110 is:", options: ["1100", "1110", "0100", "1000"], correct: 0, explanation: "XOR: 1⊕0=1, 0⊕1=1, 1⊕1=0, 0⊕0=0 → 1100." },
+    { question: "How many times does a simple loop 'for i in range(n)' execute?", options: ["n-1", "n", "n+1", "2n"], correct: 1, explanation: "range(n) produces n values: 0 to n-1." },
+  ],
+  "pb-1": [
+    { question: "What's the probability of getting heads on a fair coin?", options: ["1/4", "1/2", "1/3", "1"], correct: 1, explanation: "A fair coin has 2 equally likely outcomes, so P(heads) = 1/2." },
+    { question: "Rolling a die, what's P(even number)?", options: ["1/6", "1/3", "1/2", "2/3"], correct: 2, explanation: "Even numbers: 2, 4, 6 → 3 out of 6 = 1/2." },
+    { question: "Two coins are flipped. P(both heads)?", options: ["1/2", "1/4", "1/3", "3/4"], correct: 1, explanation: "P(HH) = 1/2 × 1/2 = 1/4." },
+    { question: "A bag has 3 red and 7 blue balls. P(red)?", options: ["3/7", "3/10", "7/10", "1/3"], correct: 1, explanation: "P(red) = 3/(3+7) = 3/10." },
+    { question: "P(A or B) when A and B are mutually exclusive:", options: ["P(A) × P(B)", "P(A) + P(B)", "P(A) - P(B)", "1"], correct: 1, explanation: "For mutually exclusive events, P(A∪B) = P(A) + P(B)." },
+  ],
+  "pb-2": [
+    { question: "Bayes' Theorem: P(A|B) = ?", options: ["P(B|A)·P(A)/P(B)", "P(A)·P(B)", "P(B)/P(A)", "P(A)+P(B)"], correct: 0, explanation: "Bayes' Theorem states P(A|B) = P(B|A)·P(A)/P(B)." },
+    { question: "A test is 95% accurate. Disease prevalence is 1%. If positive, what's roughly P(disease)?", options: ["95%", "16%", "50%", "1%"], correct: 1, explanation: "Using Bayes: (0.95×0.01)/(0.95×0.01 + 0.05×0.99) ≈ 16%." },
+    { question: "What does P(B|A) represent?", options: ["Probability of B given A occurred", "Probability of A and B", "Probability of A given B", "Joint probability"], correct: 0, explanation: "P(B|A) is the conditional probability of B given that A has occurred." },
+    { question: "If P(A)=0.3, P(B|A)=0.8, what is P(A and B)?", options: ["0.24", "1.1", "0.56", "0.30"], correct: 0, explanation: "P(A∩B) = P(B|A) × P(A) = 0.8 × 0.3 = 0.24." },
+    { question: "Prior probability refers to:", options: ["Probability after seeing evidence", "Initial belief before evidence", "Likelihood of evidence", "None"], correct: 1, explanation: "Prior probability is our initial belief before observing evidence." },
+  ],
+  "pb-3": [
+    { question: "If P(A)=0.5 and P(B|A)=0.4, what is P(A∩B)?", options: ["0.2", "0.9", "0.1", "0.45"], correct: 0, explanation: "P(A∩B) = P(B|A) × P(A) = 0.4 × 0.5 = 0.2." },
+    { question: "Events A and B are independent if:", options: ["P(A|B) = P(A)", "P(A|B) = 0", "P(A∩B) = 0", "P(A) + P(B) = 1"], correct: 0, explanation: "Independence means knowing B doesn't change the probability of A." },
+    { question: "Drawing 2 cards without replacement. Is this dependent or independent?", options: ["Independent", "Dependent", "Neither", "Both"], correct: 1, explanation: "Without replacement, the first draw affects the second draw's probabilities." },
+    { question: "P(A∪B) = P(A) + P(B) - P(A∩B) is called:", options: ["Bayes' Rule", "Addition Rule", "Chain Rule", "Multiplication Rule"], correct: 1, explanation: "This is the Addition Rule (Inclusion-Exclusion principle) of probability." },
+    { question: "If P(Rain)=0.3 and P(Umbrella|Rain)=0.9, what's P(Rain AND Umbrella)?", options: ["0.27", "1.2", "0.6", "0.03"], correct: 0, explanation: "P(R∩U) = P(U|R) × P(R) = 0.9 × 0.3 = 0.27." },
+  ],
+  "st-1": [
+    { question: "Mean of [2, 4, 6, 8, 10]?", options: ["5", "6", "7", "8"], correct: 1, explanation: "Mean = (2+4+6+8+10)/5 = 30/5 = 6." },
+    { question: "Median of [3, 1, 7, 5, 2]?", options: ["5", "3", "7", "2"], correct: 1, explanation: "Sorted: [1,2,3,5,7]. Middle value = 3." },
+    { question: "Mode of [1, 2, 2, 3, 3, 3, 4]?", options: ["1", "2", "3", "4"], correct: 2, explanation: "3 appears most frequently (3 times)." },
+    { question: "Which measure is most affected by outliers?", options: ["Mean", "Median", "Mode", "All equally"], correct: 0, explanation: "Mean is heavily influenced by extreme values." },
+    { question: "For [10, 20, 30, 40, 50], the range is:", options: ["30", "40", "50", "20"], correct: 1, explanation: "Range = max - min = 50 - 10 = 40." },
+  ],
+  "st-2": [
+    { question: "Variance measures:", options: ["Central tendency", "Data spread", "Data symmetry", "Sample size"], correct: 1, explanation: "Variance measures how spread out data points are from the mean." },
+    { question: "If all values in a dataset are the same, what is the standard deviation?", options: ["1", "0", "Undefined", "Equal to the mean"], correct: 1, explanation: "No spread means zero deviation from the mean." },
+    { question: "Standard deviation is the __ of variance.", options: ["Square", "Square root", "Log", "Inverse"], correct: 1, explanation: "SD = √Variance. It brings the measure back to original units." },
+    { question: "A higher standard deviation means:", options: ["Data is more clustered", "Data is more spread out", "Mean is higher", "Dataset is larger"], correct: 1, explanation: "Higher SD = greater spread from the mean." },
+    { question: "What percentile is the median?", options: ["25th", "50th", "75th", "100th"], correct: 1, explanation: "The median splits the data in half, so it's the 50th percentile." },
+  ],
+  "st-3": [
+    { question: "Correlation coefficient ranges from:", options: ["0 to 1", "-1 to 1", "-∞ to ∞", "0 to ∞"], correct: 1, explanation: "Pearson's correlation coefficient r ranges from -1 to 1." },
+    { question: "A correlation of -0.9 means:", options: ["Weak positive", "Strong negative", "No relationship", "Strong positive"], correct: 1, explanation: "Values close to -1 indicate strong negative correlation." },
+    { question: "Ice cream sales and drowning rates are correlated. This means:", options: ["Ice cream causes drowning", "Drowning causes ice cream sales", "A confounding variable (heat) affects both", "No relationship"], correct: 2, explanation: "Correlation ≠ causation. Hot weather is the confounding variable." },
+    { question: "r = 0 indicates:", options: ["Perfect correlation", "No linear relationship", "Strong relationship", "Inverse relationship"], correct: 1, explanation: "r = 0 means no linear correlation (could still have nonlinear relationship)." },
+    { question: "Which can establish causation?", options: ["Correlation analysis", "Controlled experiment", "Scatter plot", "Bar chart"], correct: 1, explanation: "Only controlled experiments with proper design can establish causation." },
+  ],
+  "dv-1": [
+    { question: "A bar graph is best for:", options: ["Showing trends over time", "Comparing categories", "Showing proportions", "Displaying correlations"], correct: 1, explanation: "Bar graphs excel at comparing discrete categories." },
+    { question: "Histograms show:", options: ["Categorical data", "Distribution of continuous data", "Relationships between variables", "Time series"], correct: 1, explanation: "Histograms display the frequency distribution of continuous data." },
+    { question: "What does the height of a bar represent?", options: ["The category name", "The frequency or value", "The percentage", "The mean"], correct: 1, explanation: "Bar height corresponds to the frequency or value being measured." },
+    { question: "The difference between bar charts and histograms:", options: ["No difference", "Histograms have gaps", "Bar charts have gaps, histograms don't", "Colors"], correct: 2, explanation: "Histograms have no gaps because they represent continuous data." },
+    { question: "A stacked bar chart shows:", options: ["Only totals", "Parts of a whole within categories", "Correlations", "Time trends"], correct: 1, explanation: "Stacked bars show how sub-categories contribute to the total." },
+  ],
+  "dv-2": [
+    { question: "Scatter plots show:", options: ["Categories", "Relationships between two variables", "Proportions", "Hierarchies"], correct: 1, explanation: "Scatter plots display the relationship between two continuous variables." },
+    { question: "Points trending upward-right indicate:", options: ["Negative correlation", "Positive correlation", "No correlation", "Causation"], correct: 1, explanation: "An upward trend means as X increases, Y tends to increase." },
+    { question: "An outlier in a scatter plot is:", options: ["The average point", "A point far from the pattern", "The first point", "The last point"], correct: 1, explanation: "Outliers are data points that deviate significantly from the overall pattern." },
+    { question: "A cluster in a scatter plot suggests:", options: ["Random data", "Groups of similar data points", "No relationship", "An error"], correct: 1, explanation: "Clusters indicate groups of data points with similar characteristics." },
+    { question: "The line of best fit:", options: ["Passes through all points", "Minimizes overall distance to points", "Connects first and last points", "Is always horizontal"], correct: 1, explanation: "The line of best fit minimizes the sum of squared residuals." },
+  ],
+  "dv-3": [
+    { question: "A pie chart is best when:", options: ["Showing trends", "Showing parts of a whole", "Comparing many categories", "Showing correlations"], correct: 1, explanation: "Pie charts show proportional composition of a whole." },
+    { question: "What can you NOT conclude from a single visualization?", options: ["Trends", "Causation", "Patterns", "Distribution"], correct: 1, explanation: "Visualizations show correlation/patterns but cannot prove causation." },
+    { question: "A misleading graph might:", options: ["Start Y-axis at zero", "Use consistent scales", "Truncate the Y-axis", "Label all axes"], correct: 2, explanation: "Truncating the Y-axis exaggerates differences and can mislead viewers." },
+    { question: "Dual-axis charts should be used:", options: ["Always", "With caution, as they can mislead", "Never", "Only for pie charts"], correct: 1, explanation: "Dual-axis charts can create false impressions of correlation." },
+    { question: "The best chart for showing change over time:", options: ["Pie chart", "Line chart", "Scatter plot", "Tree map"], correct: 1, explanation: "Line charts are ideal for showing trends and changes over time." },
+  ],
+  // ML Fundamentals
+  "ml-1": [
+    { question: "Machine Learning is a subset of:", options: ["Statistics", "Artificial Intelligence", "Database Management", "Networking"], correct: 1, explanation: "ML is a branch of AI that focuses on learning from data." },
+    { question: "The input to an ML model is called:", options: ["Labels", "Features", "Weights", "Predictions"], correct: 1, explanation: "Features are the input variables the model uses to make predictions." },
+    { question: "Supervised learning requires:", options: ["No data", "Labeled data", "Only images", "Unlabeled data"], correct: 1, explanation: "Supervised learning uses labeled examples to learn the mapping from inputs to outputs." },
+    { question: "Which is NOT a type of ML?", options: ["Supervised", "Unsupervised", "Reinforcement", "Structured"], correct: 3, explanation: "The three main types of ML are supervised, unsupervised, and reinforcement learning." },
+    { question: "What does a model 'learn'?", options: ["New data", "Patterns and relationships in data", "Programming languages", "Hardware configurations"], correct: 1, explanation: "ML models learn patterns and relationships from training data." },
+  ],
+  "ml-2": [
+    { question: "Why split data into train and test sets?", options: ["To save storage", "To evaluate generalization", "To make training faster", "It's not necessary"], correct: 1, explanation: "The test set evaluates how well the model generalizes to unseen data." },
+    { question: "Typical train-test split ratio:", options: ["50-50", "80-20", "99-1", "10-90"], correct: 1, explanation: "80% training, 20% testing is a common split ratio." },
+    { question: "Using test data during training leads to:", options: ["Better accuracy", "Data leakage", "Faster training", "Simpler models"], correct: 1, explanation: "Data leakage gives an overly optimistic view of model performance." },
+    { question: "Cross-validation helps:", options: ["Increase data size", "Get more reliable performance estimates", "Speed up training", "Remove features"], correct: 1, explanation: "Cross-validation uses multiple train-test splits for robust evaluation." },
+    { question: "Validation set is used for:", options: ["Final evaluation", "Hyperparameter tuning", "Data cleaning", "Feature extraction"], correct: 1, explanation: "Validation sets help tune model parameters without touching the test set." },
+  ],
+  "ml-3": [
+    { question: "A loss function measures:", options: ["Training speed", "How wrong predictions are", "Number of features", "Dataset size"], correct: 1, explanation: "Loss functions quantify the error between predictions and actual values." },
+    { question: "MSE stands for:", options: ["Maximum Standard Error", "Mean Squared Error", "Minimum Sum Error", "Mean Standard Estimation"], correct: 1, explanation: "Mean Squared Error averages the squares of prediction errors." },
+    { question: "Lower loss means:", options: ["Worse model", "Better predictions", "More features needed", "Overfitting"], correct: 1, explanation: "Lower loss indicates predictions are closer to actual values." },
+    { question: "Cross-entropy loss is used for:", options: ["Regression", "Classification", "Clustering", "Dimensionality reduction"], correct: 1, explanation: "Cross-entropy measures the difference between predicted and actual class distributions." },
+    { question: "Gradient descent minimizes the loss by:", options: ["Adding more data", "Adjusting model weights iteratively", "Removing features", "Increasing learning rate infinitely"], correct: 1, explanation: "Gradient descent updates weights in the direction that reduces loss." },
+  ],
+  // Supervised Learning
+  "sl-1": [
+    { question: "Linear regression predicts:", options: ["Categories", "Continuous values", "Clusters", "Rankings"], correct: 1, explanation: "Linear regression outputs continuous numerical predictions." },
+    { question: "The line y = mx + b is called:", options: ["Decision boundary", "Regression line", "Cluster center", "Loss function"], correct: 1, explanation: "y = mx + b represents the best-fit regression line." },
+    { question: "In y = mx + b, what is 'm'?", options: ["Y-intercept", "Slope", "Error", "Feature"], correct: 1, explanation: "m is the slope, indicating how much y changes per unit change in x." },
+    { question: "Least squares method minimizes:", options: ["Number of points", "Sum of squared residuals", "Number of features", "Training time"], correct: 1, explanation: "It minimizes the sum of squared differences between actual and predicted values." },
+    { question: "Adding more features always improves linear regression?", options: ["True", "False", "Only with big data", "Only with small data"], correct: 1, explanation: "More features can cause overfitting, not always improving the model." },
+  ],
+  "sl-2": [
+    { question: "In K-NN, what does K represent?", options: ["Number of features", "Number of nearest neighbors", "Number of classes", "Number of iterations"], correct: 1, explanation: "K is the number of nearest neighbors used for prediction." },
+    { question: "When K=1 in K-NN:", options: ["Model is very smooth", "Model overfits", "Model underfits", "Model ignores data"], correct: 1, explanation: "K=1 makes the model memorize training data, causing overfitting." },
+    { question: "K-NN uses which measure to find neighbors?", options: ["Correlation", "Distance (e.g., Euclidean)", "Variance", "Entropy"], correct: 1, explanation: "K-NN typically uses Euclidean distance to find the closest neighbors." },
+    { question: "Increasing K in K-NN generally:", options: ["Increases complexity", "Smooths the decision boundary", "Speeds up prediction", "Reduces training data needed"], correct: 1, explanation: "Higher K creates smoother, less complex decision boundaries." },
+    { question: "K-NN is called a 'lazy learner' because:", options: ["It's slow", "It doesn't learn during training", "It needs lots of data", "It's inaccurate"], correct: 1, explanation: "K-NN stores all training data and does computation only at prediction time." },
+  ],
+  "sl-3": [
+    { question: "Decision trees split data using:", options: ["Random selections", "Feature thresholds that maximize information gain", "Always the first feature", "User-defined rules only"], correct: 1, explanation: "Decision trees find the feature splits that best separate the data." },
+    { question: "What is the root node?", options: ["The leaf", "The first split", "The last prediction", "An outlier"], correct: 1, explanation: "The root node is the first decision point at the top of the tree." },
+    { question: "Leaf nodes represent:", options: ["Features", "Splits", "Final predictions", "Training data"], correct: 2, explanation: "Leaf nodes contain the final prediction (class or value)." },
+    { question: "A very deep decision tree likely:", options: ["Underfits", "Overfits", "Is perfect", "Ignores data"], correct: 1, explanation: "Very deep trees memorize training data, leading to overfitting." },
+    { question: "Pruning a decision tree:", options: ["Adds more branches", "Removes unnecessary branches", "Adds more features", "Increases depth"], correct: 1, explanation: "Pruning removes branches that don't improve generalization." },
+  ],
+  // Unsupervised
+  "ul-1": [
+    { question: "K-Means requires you to specify:", options: ["Labels", "Number of clusters (K)", "Learning rate", "Loss function"], correct: 1, explanation: "You must choose K, the number of clusters, before running K-Means." },
+    { question: "K-Means assigns points to clusters based on:", options: ["Random choice", "Nearest centroid", "Alphabetical order", "Time of arrival"], correct: 1, explanation: "Each point is assigned to the cluster with the nearest centroid." },
+    { question: "Centroids are:", options: ["Edge points", "Center of each cluster", "Outliers", "Features"], correct: 1, explanation: "Centroids are the mean position of all points in a cluster." },
+    { question: "K-Means converges when:", options: ["K changes", "Centroids stop moving significantly", "All points are in one cluster", "After exactly 10 iterations"], correct: 1, explanation: "The algorithm stops when centroid positions stabilize." },
+    { question: "The elbow method helps choose:", options: ["The learning rate", "The optimal K", "The best features", "The loss function"], correct: 1, explanation: "The elbow method plots distortion vs K to find the optimal number of clusters." },
+  ],
+  "ul-2": [
+    { question: "PCA is used for:", options: ["Classification", "Dimensionality reduction", "Clustering", "Regression"], correct: 1, explanation: "PCA reduces the number of features while preserving maximum variance." },
+    { question: "Principal components capture:", options: ["Random directions", "Directions of maximum variance", "The mean of data", "Outliers"], correct: 1, explanation: "Each principal component is a direction of maximum variance." },
+    { question: "PCA components are:", options: ["Parallel", "Orthogonal", "Random", "Identical"], correct: 1, explanation: "Principal components are orthogonal (perpendicular) to each other." },
+    { question: "After PCA, the first component has:", options: ["Least variance", "Most variance", "Zero variance", "Average variance"], correct: 1, explanation: "Components are ordered by decreasing variance explained." },
+    { question: "PCA is useful when:", options: ["Data has few features", "Data has many correlated features", "Labels are available", "Data is categorical"], correct: 1, explanation: "PCA helps reduce redundancy in high-dimensional correlated data." },
+  ],
+  "ul-3": [
+    { question: "Hierarchical clustering creates:", options: ["A fixed number of clusters", "A tree-like structure (dendrogram)", "Only 2 clusters", "Random groupings"], correct: 1, explanation: "It produces a dendrogram showing nested cluster relationships." },
+    { question: "Agglomerative clustering starts with:", options: ["All points in one cluster", "Each point as its own cluster", "K random clusters", "No clusters"], correct: 1, explanation: "Bottom-up: starts with individual points and merges them." },
+    { question: "The dendrogram is cut to determine:", options: ["Feature importance", "Number of clusters", "Learning rate", "Loss"], correct: 1, explanation: "Cutting the dendrogram at different levels gives different numbers of clusters." },
+    { question: "Linkage criteria determines:", options: ["Feature selection", "How cluster distances are measured", "The number of iterations", "Learning rate"], correct: 1, explanation: "Linkage (single, complete, average) defines inter-cluster distance." },
+    { question: "Advantage over K-Means:", options: ["Always faster", "No need to pre-specify K", "Handles only numerical data", "Simpler algorithm"], correct: 1, explanation: "Hierarchical clustering doesn't require choosing K in advance." },
+  ],
+  // Evaluation
+  "ev-1": [
+    { question: "Accuracy = ", options: ["TP / (TP+FP)", "(TP+TN) / Total", "TP / (TP+FN)", "TN / Total"], correct: 1, explanation: "Accuracy is the ratio of correct predictions to total predictions." },
+    { question: "Precision measures:", options: ["All correct predictions", "How many predicted positives are actually positive", "How many actual positives are found", "Overall error"], correct: 1, explanation: "Precision = TP / (TP + FP) - quality of positive predictions." },
+    { question: "A model predicts all emails as 'not spam'. If 1% are spam, accuracy is:", options: ["1%", "50%", "99%", "0%"], correct: 2, explanation: "99% accuracy but it misses all spam - accuracy can be misleading with imbalanced data." },
+    { question: "True Positive means:", options: ["Predicted positive, actually negative", "Predicted positive, actually positive", "Predicted negative, actually positive", "Predicted negative, actually negative"], correct: 1, explanation: "TP: model correctly predicted the positive class." },
+    { question: "Confusion matrix shows:", options: ["Feature correlations", "TP, TN, FP, FN counts", "Learning curves", "Feature importance"], correct: 1, explanation: "A confusion matrix tabulates all prediction outcomes." },
+  ],
+  "ev-2": [
+    { question: "F1-Score is the __ of precision and recall:", options: ["Sum", "Average", "Harmonic mean", "Product"], correct: 2, explanation: "F1 = 2 × (Precision × Recall) / (Precision + Recall)." },
+    { question: "Recall measures:", options: ["Predicted positives that are correct", "Actual positives that are found", "All correct predictions", "Negative predictions"], correct: 1, explanation: "Recall = TP / (TP + FN) - sensitivity to positive class." },
+    { question: "High recall is important when:", options: ["False positives are costly", "Missing positives is costly", "Dataset is small", "Features are many"], correct: 1, explanation: "High recall ensures we catch most actual positives (e.g., disease detection)." },
+    { question: "Precision-recall tradeoff means:", options: ["Both always increase together", "Improving one often decreases the other", "They're always equal", "Neither matters"], correct: 1, explanation: "Raising the threshold increases precision but decreases recall, and vice versa." },
+    { question: "When is F1-Score preferred over accuracy?", options: ["Always", "With balanced datasets", "With imbalanced datasets", "Never"], correct: 2, explanation: "F1 is more informative than accuracy when classes are imbalanced." },
+  ],
+  "ev-3": [
+    { question: "ROC curve plots:", options: ["Precision vs Recall", "TPR vs FPR", "Accuracy vs Loss", "Features vs Weights"], correct: 1, explanation: "ROC plots True Positive Rate against False Positive Rate." },
+    { question: "AUC of 1.0 means:", options: ["Worst model", "Perfect model", "Random model", "Overfitting"], correct: 1, explanation: "AUC = 1.0 means the model perfectly separates classes." },
+    { question: "AUC of 0.5 means:", options: ["Perfect model", "Random guessing", "Good model", "Overfitting"], correct: 1, explanation: "AUC = 0.5 is equivalent to random guessing (diagonal line)." },
+    { question: "A model with AUC 0.85 is generally:", options: ["Poor", "Good", "Perfect", "Random"], correct: 1, explanation: "AUC > 0.8 is generally considered good performance." },
+    { question: "ROC is threshold-independent because:", options: ["It ignores predictions", "It evaluates across all thresholds", "It only uses one threshold", "It doesn't use labels"], correct: 1, explanation: "ROC evaluates performance across all possible classification thresholds." },
+  ],
+  // Famous Algorithms
+  "fa-1": [
+    { question: "PageRank was developed by:", options: ["Facebook", "Google founders", "Microsoft", "IBM"], correct: 1, explanation: "Larry Page and Sergey Brin developed PageRank at Stanford." },
+    { question: "PageRank measures:", options: ["Page load speed", "Importance based on link structure", "Page content quality", "Number of images"], correct: 1, explanation: "PageRank determines page importance based on incoming links." },
+    { question: "A page with many incoming links from important pages has:", options: ["Low PageRank", "High PageRank", "No PageRank", "Negative PageRank"], correct: 1, explanation: "More high-quality incoming links = higher PageRank." },
+    { question: "PageRank uses a 'damping factor' to model:", options: ["Page speed", "Random surfer probability of continuing", "Image loading", "CSS rendering"], correct: 1, explanation: "The damping factor (typically 0.85) models the probability a user continues clicking links." },
+    { question: "PageRank can be applied beyond web pages to:", options: ["Only websites", "Any network/graph structure", "Only social media", "Only academic papers"], correct: 1, explanation: "PageRank works on any graph - social networks, citation networks, etc." },
+  ],
+  "fa-2": [
+    { question: "TF-IDF stands for:", options: ["Total Feature - Inverse Data Format", "Term Frequency - Inverse Document Frequency", "Text Filter - Input Data Function", "Training Feature - Input Data"], correct: 1, explanation: "Term Frequency-Inverse Document Frequency measures word importance." },
+    { question: "High TF-IDF means a word is:", options: ["Common everywhere", "Important in a specific document", "A stop word", "Misspelled"], correct: 1, explanation: "High TF-IDF indicates a word is frequent in one document but rare overall." },
+    { question: "Words like 'the', 'is', 'and' typically have:", options: ["High TF-IDF", "Low TF-IDF", "No TF-IDF", "Negative TF-IDF"], correct: 1, explanation: "Common words appear in many documents, giving them low IDF and thus low TF-IDF." },
+    { question: "IDF decreases when a term:", options: ["Is rare", "Appears in many documents", "Is long", "Is capitalized"], correct: 1, explanation: "IDF = log(total docs / docs containing term). More docs = lower IDF." },
+    { question: "TF-IDF is used in:", options: ["Image recognition", "Search engines and text analysis", "Audio processing", "Video streaming"], correct: 1, explanation: "TF-IDF is fundamental in information retrieval and text mining." },
+  ],
+  "fa-3": [
+    { question: "Naive Bayes is 'naive' because it assumes:", options: ["Data is always correct", "Features are independent", "Labels don't matter", "All features are identical"], correct: 1, explanation: "The 'naive' assumption is that all features are conditionally independent." },
+    { question: "Naive Bayes is based on:", options: ["Decision trees", "Bayes' Theorem", "Gradient descent", "K-means"], correct: 1, explanation: "It applies Bayes' Theorem with the naive independence assumption." },
+    { question: "Naive Bayes works well for:", options: ["Image generation", "Text classification", "Self-driving cars", "Video editing"], correct: 1, explanation: "It's highly effective for spam filtering, sentiment analysis, and document classification." },
+    { question: "Despite its 'naive' assumption, Naive Bayes:", options: ["Never works", "Often performs surprisingly well", "Is always the best", "Can't handle text"], correct: 1, explanation: "In practice, Naive Bayes often achieves good results despite its simplifying assumption." },
+    { question: "Gaussian Naive Bayes assumes features follow:", options: ["Uniform distribution", "Normal distribution", "Poisson distribution", "No distribution"], correct: 1, explanation: "Gaussian NB models each feature as having a normal (Gaussian) distribution." },
+  ],
+  // Linear Algebra
+  "la-1": [
+    { question: "Matrix multiplication AB requires:", options: ["Same dimensions", "Columns of A = Rows of B", "Rows of A = Rows of B", "Any dimensions"], correct: 1, explanation: "For AB, A must have as many columns as B has rows." },
+    { question: "The identity matrix I satisfies:", options: ["AI = 0", "AI = A", "AI = I", "AI = A²"], correct: 1, explanation: "Multiplying any matrix by the identity matrix returns the original matrix." },
+    { question: "Matrix transpose swaps:", options: ["Values", "Rows and columns", "Determinant", "Inverse"], correct: 1, explanation: "Transpose switches rows with columns: A[i][j] becomes A[j][i]." },
+    { question: "A 3×2 matrix times a 2×4 matrix gives:", options: ["3×4 matrix", "2×3 matrix", "4×3 matrix", "Cannot multiply"], correct: 0, explanation: "(3×2) × (2×4) = 3×4 matrix." },
+    { question: "The inverse of matrix A is denoted:", options: ["A²", "A⁻¹", "Aᵀ", "A*"], correct: 1, explanation: "A⁻¹ is the inverse, where AA⁻¹ = I." },
+  ],
+  "la-2": [
+    { question: "A system of linear equations can be written as:", options: ["y = mx+b", "Ax = b", "x² + y² = r²", "e^x = y"], correct: 1, explanation: "Matrix form Ax = b represents a system of linear equations." },
+    { question: "A system with no solution is called:", options: ["Consistent", "Inconsistent", "Underdetermined", "Trivial"], correct: 1, explanation: "Inconsistent systems have contradictory equations with no solution." },
+    { question: "Gaussian elimination:", options: ["Finds eigenvalues", "Solves linear systems by row operations", "Multiplies matrices", "Finds determinants only"], correct: 1, explanation: "Gaussian elimination uses row operations to reduce a system to row echelon form." },
+    { question: "An underdetermined system has:", options: ["One solution", "No solution", "Infinitely many solutions", "Exactly two solutions"], correct: 2, explanation: "More unknowns than equations typically gives infinitely many solutions." },
+    { question: "Rank of a matrix determines:", options: ["Its size", "Number of linearly independent rows", "Its determinant", "Number of zeros"], correct: 1, explanation: "Rank = number of linearly independent rows (or columns)." },
+  ],
+  "la-3": [
+    { question: "The determinant of a 2×2 matrix [[a,b],[c,d]] is:", options: ["a+d", "ad-bc", "ac-bd", "ab+cd"], correct: 1, explanation: "det = ad - bc for a 2×2 matrix." },
+    { question: "A matrix with determinant 0 is:", options: ["Invertible", "Singular (not invertible)", "Orthogonal", "Symmetric"], correct: 1, explanation: "Zero determinant means the matrix has no inverse." },
+    { question: "Determinant can be used to check:", options: ["Matrix size", "If a system has a unique solution", "Number of features", "Training accuracy"], correct: 1, explanation: "Non-zero determinant of coefficient matrix → unique solution exists." },
+    { question: "det(AB) = ", options: ["det(A) + det(B)", "det(A) × det(B)", "det(A) - det(B)", "det(A) / det(B)"], correct: 1, explanation: "The determinant of a product equals the product of determinants." },
+    { question: "For a 3×3 matrix, cofactor expansion involves:", options: ["Only the first row", "Any row or column", "Only the diagonal", "Only the last column"], correct: 1, explanation: "Cofactor expansion works along any row or column." },
+  ],
+  // Optimization
+  "op-1": [
+    { question: "Gradient descent moves in the direction of:", options: ["Steepest ascent", "Steepest descent (negative gradient)", "Random direction", "Constant direction"], correct: 1, explanation: "It follows the negative gradient to minimize the loss function." },
+    { question: "Learning rate controls:", options: ["Number of features", "Step size in gradient descent", "Number of epochs", "Batch size"], correct: 1, explanation: "Learning rate determines how big each parameter update step is." },
+    { question: "Too high a learning rate can cause:", options: ["Very slow convergence", "Overshooting the minimum", "Perfect convergence", "No effect"], correct: 1, explanation: "Large steps can overshoot and oscillate around the minimum." },
+    { question: "Gradient descent converges when:", options: ["Loss increases", "Loss stops decreasing significantly", "All features are used", "Learning rate is 1"], correct: 1, explanation: "Convergence occurs when the loss stabilizes (gradient ≈ 0)." },
+    { question: "Stochastic gradient descent uses:", options: ["All data per step", "One sample per step", "No data", "Half the data"], correct: 1, explanation: "SGD updates weights using one randomly selected sample at a time." },
+  ],
+  "op-2": [
+    { question: "A function's maximum is where:", options: ["Derivative is positive", "Derivative is zero and second derivative is negative", "Derivative is negative", "Function is undefined"], correct: 1, explanation: "At a maximum, f'(x)=0 and f''(x)<0." },
+    { question: "A local minimum is:", options: ["The lowest point globally", "The lowest point in a neighborhood", "Always the best solution", "Where the function is undefined"], correct: 1, explanation: "A local minimum is lower than all nearby points but not necessarily the global minimum." },
+    { question: "The global minimum is:", options: ["Any minimum", "The absolute lowest point", "Always easy to find", "The highest point"], correct: 1, explanation: "The global minimum has the lowest function value across the entire domain." },
+    { question: "A saddle point has:", options: ["Zero gradient but is neither min nor max", "Positive gradient", "Negative gradient", "Maximum value"], correct: 0, explanation: "At a saddle point, the gradient is zero but it's a minimum in one direction and maximum in another." },
+    { question: "Convex functions have:", options: ["Many local minima", "Exactly one global minimum", "No minimum", "Only maxima"], correct: 1, explanation: "Convex functions have a single global minimum, making optimization easier." },
+  ],
+  "op-3": [
+    { question: "Constrained optimization means:", options: ["No limits on variables", "Variables must satisfy conditions", "Only one variable", "Random optimization"], correct: 1, explanation: "Constraints limit the feasible region for optimization." },
+    { question: "Lagrange multipliers help solve:", options: ["Unconstrained problems", "Constrained optimization", "Linear equations only", "Data cleaning"], correct: 1, explanation: "Lagrange multipliers convert constrained problems into solvable systems." },
+    { question: "In linear programming, the feasible region is:", options: ["Always empty", "Set of all points satisfying constraints", "A single point", "Infinite"], correct: 1, explanation: "The feasible region contains all points that satisfy all constraints." },
+    { question: "The optimal solution in linear programming is at:", options: ["The center", "A vertex of the feasible region", "Any interior point", "Outside the region"], correct: 1, explanation: "For linear objectives, the optimum occurs at a vertex of the feasible region." },
+    { question: "Regularization adds constraints to:", options: ["Add more features", "Prevent overfitting", "Speed up training", "Increase model size"], correct: 1, explanation: "Regularization penalizes complex models to reduce overfitting." },
+  ],
+  // AI Ethics
+  "ae-1": [
+    { question: "AI bias can come from:", options: ["Only algorithms", "Biased training data", "Only hardware", "Random chance only"], correct: 1, explanation: "Training data often reflects historical biases, which models then learn." },
+    { question: "Fairness in AI means:", options: ["Perfect accuracy", "Equal treatment across groups", "Using more data", "Faster predictions"], correct: 1, explanation: "AI fairness ensures models don't discriminate against protected groups." },
+    { question: "To mitigate bias, you should:", options: ["Use more complex models", "Audit data and model outputs for bias", "Ignore demographics", "Remove all features"], correct: 1, explanation: "Regular auditing helps identify and address biases in AI systems." },
+    { question: "Algorithmic accountability means:", options: ["Algorithms have feelings", "Developers are responsible for AI outcomes", "AI should be banned", "Only governments can use AI"], correct: 1, explanation: "Those who build and deploy AI should be accountable for its impacts." },
+    { question: "Diverse training data helps:", options: ["Slow down training", "Reduce bias and improve fairness", "Increase model size", "Nothing"], correct: 1, explanation: "Diverse data helps models perform fairly across different populations." },
+  ],
+  "ae-2": [
+    { question: "AI is used in healthcare for:", options: ["Nothing", "Diagnosis, drug discovery, imaging", "Only billing", "Only scheduling"], correct: 1, explanation: "AI helps with medical imaging, drug discovery, diagnosis, and more." },
+    { question: "Self-driving cars use:", options: ["Only GPS", "Computer vision, sensors, and ML", "Only cameras", "Manual input only"], correct: 1, explanation: "Autonomous vehicles combine multiple AI technologies for navigation." },
+    { question: "AI in education can:", options: ["Replace all teachers", "Personalize learning paths", "Only grade papers", "Nothing useful"], correct: 1, explanation: "AI enables adaptive learning tailored to individual student needs." },
+    { question: "Natural Language Processing enables:", options: ["Image editing", "Chatbots and translation", "Video games only", "Hardware design"], correct: 1, explanation: "NLP powers chatbots, translation, sentiment analysis, and more." },
+    { question: "AI's biggest challenge currently is:", options: ["Speed", "Ethical deployment and trust", "Storage", "Color accuracy"], correct: 1, explanation: "Ensuring AI is used ethically and building public trust remains the biggest challenge." },
+  ],
+  "ae-3": [
+    { question: "Overfitting occurs when a model:", options: ["Performs well on test data", "Memorizes training data", "Has too few parameters", "Uses regularization"], correct: 1, explanation: "Overfitting: excellent training performance but poor generalization." },
+    { question: "The bias-variance tradeoff means:", options: ["Both can be zero", "Reducing one tends to increase the other", "They're always equal", "Neither matters"], correct: 1, explanation: "Low bias often means high variance and vice versa; the goal is to balance both." },
+    { question: "Ensemble methods combine:", options: ["Data sources", "Multiple models for better predictions", "Features only", "Loss functions"], correct: 1, explanation: "Ensembles (Random Forest, Boosting) aggregate multiple models." },
+    { question: "Transfer learning:", options: ["Starts from scratch", "Uses knowledge from one task for another", "Only works for images", "Requires no data"], correct: 1, explanation: "Transfer learning reuses learned features, saving time and data." },
+    { question: "The 'No Free Lunch' theorem states:", options: ["AI is always free", "No single algorithm is best for all problems", "More data is always better", "Deep learning beats everything"], correct: 1, explanation: "No universal best algorithm - performance depends on the specific problem." },
+    { question: "Feature engineering is:", options: ["Building hardware", "Creating informative features from raw data", "A type of neural network", "Data deletion"], correct: 1, explanation: "Good feature engineering can dramatically improve model performance." },
+    { question: "Batch normalization helps:", options: ["Remove data", "Stabilize and speed up training", "Reduce features", "Increase bias"], correct: 1, explanation: "Batch norm normalizes layer inputs, improving training stability." },
+    { question: "Dropout is a regularization technique that:", options: ["Removes features permanently", "Randomly deactivates neurons during training", "Adds more layers", "Increases learning rate"], correct: 1, explanation: "Dropout prevents co-adaptation by randomly zeroing neurons." },
+    { question: "In reinforcement learning, an agent learns by:", options: ["Supervised labels", "Receiving rewards and penalties", "Clustering data", "Static rules"], correct: 1, explanation: "RL agents learn policies through trial-and-error with reward signals." },
+    { question: "The AI revolution's biggest opportunity is:", options: ["Replacing all jobs", "Augmenting human capabilities", "Creating superintelligence", "Making art only"], correct: 1, explanation: "AI's greatest potential is in augmenting human abilities across domains." },
+  ],
+};
