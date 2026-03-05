@@ -4,7 +4,6 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AuthProvider, useAuth } from "@/contexts/AuthContext";
-import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Auth from "./pages/Auth";
 import OlympiadLayout from "./components/ai-olympiad/OlympiadLayout";
@@ -13,6 +12,8 @@ import Syllabus from "./pages/ai-olympiad/Syllabus";
 import Practice from "./pages/ai-olympiad/Practice";
 import Battle from "./pages/ai-olympiad/Battle";
 import Leaderboard from "./pages/ai-olympiad/Leaderboard";
+import Roadmap from "./pages/ai-olympiad/Roadmap";
+import RoadmapExercise from "./pages/ai-olympiad/RoadmapExercise";
 
 const queryClient = new QueryClient();
 
@@ -37,10 +38,9 @@ const App = () => (
       <BrowserRouter basename={import.meta.env.MODE === "production" ? "/nextgenbharat" : ""}>
         <AuthProvider>
           <Routes>
-            <Route path="/" element={<Index />} />
             <Route path="/auth" element={<Auth />} />
             <Route
-              path="/ai-olympiad"
+              path="/"
               element={
                 <ProtectedRoute>
                   <OlympiadLayout />
@@ -52,6 +52,8 @@ const App = () => (
               <Route path="practice" element={<Practice />} />
               <Route path="battle" element={<Battle />} />
               <Route path="leaderboard" element={<Leaderboard />} />
+              <Route path="roadmap" element={<Roadmap />} />
+              <Route path="roadmap/:exerciseId" element={<RoadmapExercise />} />
             </Route>
             <Route path="*" element={<NotFound />} />
           </Routes>

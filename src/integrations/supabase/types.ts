@@ -14,6 +14,39 @@ export type Database = {
   }
   public: {
     Tables: {
+      exercise_progress: {
+        Row: {
+          completed: boolean
+          completed_at: string | null
+          created_at: string
+          exercise_id: string
+          id: string
+          score: number
+          user_id: string
+          xp_earned: number
+        }
+        Insert: {
+          completed?: boolean
+          completed_at?: string | null
+          created_at?: string
+          exercise_id: string
+          id?: string
+          score?: number
+          user_id: string
+          xp_earned?: number
+        }
+        Update: {
+          completed?: boolean
+          completed_at?: string | null
+          created_at?: string
+          exercise_id?: string
+          id?: string
+          score?: number
+          user_id?: string
+          xp_earned?: number
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string | null
