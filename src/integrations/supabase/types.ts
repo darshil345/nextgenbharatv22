@@ -14,6 +14,39 @@ export type Database = {
   }
   public: {
     Tables: {
+      battle_stats: {
+        Row: {
+          created_at: string
+          elo_rating: number
+          id: string
+          losses: number
+          total_battles: number
+          updated_at: string
+          user_id: string
+          wins: number
+        }
+        Insert: {
+          created_at?: string
+          elo_rating?: number
+          id?: string
+          losses?: number
+          total_battles?: number
+          updated_at?: string
+          user_id: string
+          wins?: number
+        }
+        Update: {
+          created_at?: string
+          elo_rating?: number
+          id?: string
+          losses?: number
+          total_battles?: number
+          updated_at?: string
+          user_id?: string
+          wins?: number
+        }
+        Relationships: []
+      }
       exercise_progress: {
         Row: {
           completed: boolean
