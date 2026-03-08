@@ -9,7 +9,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { IOAI_SYLLABUS } from "@/data/ioaiSyllabus";
+import { INAIO_SYLLABUS } from "@/data/inaiOSyllabus";
 
 // Mock progress data
 const TOPIC_PROGRESS: Record<string, number> = {
