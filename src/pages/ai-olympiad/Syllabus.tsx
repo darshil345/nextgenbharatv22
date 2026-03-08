@@ -39,7 +39,7 @@ const Syllabus = () => {
           📚 INAIO Syllabus
         </h1>
         <p className="text-muted-foreground text-sm mb-6">
-          Master every topic from Foundations to Advanced ML — structured for International Olympiad in AI preparation.
+          Master every topic from Foundations to Advanced ML — structured for Indian National AI Olympiad preparation.
         </p>
       </motion.div>
 
