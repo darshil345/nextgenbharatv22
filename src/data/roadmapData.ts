@@ -22,7 +22,7 @@ export interface RoadmapStage {
   nodes: RoadmapNode[];
 }
 
-// Aligned with IOAI Stage 1 & 2 syllabus
+// Aligned with INAIO Stage 1 & 2 syllabus
 export const ROADMAP_STAGES: RoadmapStage[] = [
   {
     id: "stage-1",

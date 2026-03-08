@@ -44,7 +44,7 @@ const Syllabus = () => {
       </motion.div>
 
       {/* Stage Tabs */}
-      {IOAI_SYLLABUS.map((stage, stageIdx) => (
+      {INAIO_SYLLABUS.map((stage, stageIdx) => (
         <motion.div
           key={stage.title}
           initial={{ opacity: 0, y: 20 }}
