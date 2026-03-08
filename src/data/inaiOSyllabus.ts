@@ -15,7 +15,7 @@ export interface Stage {
   sections: Section[];
 }
 
-export const IOAI_SYLLABUS: Stage[] = [
+export const INAIO_SYLLABUS: Stage[] = [
   {
     title: "Stage 1",
     note: "The stage-wise syllabus is structured for progressive preparation toward IOAI.",
