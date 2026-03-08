@@ -133,7 +133,7 @@ const Practice = () => {
           <Sparkles className="text-secondary" size={14} />
         </div>
         <h1 className="font-heading text-2xl font-bold text-foreground">Study Materials</h1>
-        <p className="text-sm text-muted-foreground mt-1">Notes, worksheets, and practice problems for IOAI prep</p>
+        <p className="text-sm text-muted-foreground mt-1">Notes, worksheets, and practice problems for INAIO prep</p>
       </motion.div>
       <div className="grid gap-3">
         {PRACTICE_CATEGORIES.map((cat, idx) => (
