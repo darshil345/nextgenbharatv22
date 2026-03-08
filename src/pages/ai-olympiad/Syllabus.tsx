@@ -9,7 +9,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { IOAI_SYLLABUS } from "@/data/ioaiSyllabus";
+import { INAIO_SYLLABUS } from "@/data/inaiOSyllabus";
 
 // Mock progress data
 const TOPIC_PROGRESS: Record<string, number> = {
@@ -36,15 +36,15 @@ const Syllabus = () => {
     <div className="max-w-4xl mx-auto space-y-6">
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
         <h1 className="font-heading text-2xl md:text-3xl font-bold text-foreground mb-2">
-          📚 IOAI Syllabus
+          📚 INAIO Syllabus
         </h1>
         <p className="text-muted-foreground text-sm mb-6">
-          Master every topic from Foundations to Advanced ML — structured for International Olympiad in AI preparation.
+          Master every topic from Foundations to Advanced ML — structured for Indian National AI Olympiad preparation.
         </p>
       </motion.div>
 
       {/* Stage Tabs */}
-      {IOAI_SYLLABUS.map((stage, stageIdx) => (
+      {INAIO_SYLLABUS.map((stage, stageIdx) => (
         <motion.div
           key={stage.title}
           initial={{ opacity: 0, y: 20 }}

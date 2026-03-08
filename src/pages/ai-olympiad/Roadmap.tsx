@@ -219,7 +219,7 @@ const Roadmap = () => {
             <span className="text-3xl">🏆</span>
           </div>
         </motion.div>
-        <p className="text-center text-sm font-heading font-bold text-muted-foreground mt-2">IOAI Ready!</p>
+        <p className="text-center text-sm font-heading font-bold text-muted-foreground mt-2">INAIO Ready!</p>
       </div>
     </div>
   );
