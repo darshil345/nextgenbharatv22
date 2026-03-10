@@ -179,6 +179,131 @@ export const PRACTICE_CATEGORIES: PracticeCategory[] = [
       { id: "w-la-1", title: "Matrix Arithmetic", description: "Addition, multiplication, and transpose", difficulty: "Beginner", questionCount: 12, estimatedTime: "20 min", topics: ["Matrix Operations"] },
       { id: "w-la-2", title: "Systems of Equations", description: "Solve using matrices and Gaussian elimination", difficulty: "Intermediate", questionCount: 10, estimatedTime: "30 min", topics: ["Linear Systems"] },
       { id: "w-la-3", title: "Determinants & Inverses", description: "Calculate determinants and find inverse matrices", difficulty: "Advanced", questionCount: 8, estimatedTime: "35 min", topics: ["Determinants", "Inverse"] },
+      { id: "w-la-4", title: "Eigenvalues & Eigenvectors", description: "Find eigenvalues and understand their significance in ML", difficulty: "Advanced", questionCount: 10, estimatedTime: "30 min", topics: ["Eigenvalues", "PCA"] },
+    ],
+  },
+  {
+    id: "optimization",
+    title: "Optimization",
+    icon: "📈",
+    description: "Linear optimization, maxima, minima, and constraints",
+    notes: [
+      {
+        id: "n-op-1",
+        title: "Linear Optimization — Complete Guide",
+        icon: "📖",
+        content: `**Optimization** is finding the best solution from a set of feasible solutions — central to both mathematics and AI.\n\n---\n\n**1. What is Optimization?**\n\n• **Objective function:** The quantity to maximize or minimize\n• **Constraints:** Conditions the solution must satisfy\n• **Feasible region:** Set of all valid solutions\n• **Optimal solution:** The best point in the feasible region\n\n---\n\n**2. Linear Programming (LP):**\n\nMaximize/Minimize: c₁x₁ + c₂x₂ + ... + cₙxₙ\nSubject to:\n• a₁₁x₁ + a₁₂x₂ ≤ b₁\n• a₂₁x₁ + a₂₂x₂ ≤ b₂\n• x₁, x₂ ≥ 0\n\n**Key Property:** Optimal solution lies at a vertex (corner point) of the feasible region.\n\n---\n\n**3. Graphical Method (2 variables):**\n\n1. Plot each constraint as a line\n2. Shade the feasible region (intersection of all constraints)\n3. Identify corner points\n4. Evaluate objective function at each corner\n5. Best value = optimal solution\n\n**Example:**\nMaximize Z = 3x + 5y\nSubject to: x + 2y ≤ 12, 2x + y ≤ 12, x,y ≥ 0\n\nCorner points: (0,0), (6,0), (0,6), (4,4)\nZ values: 0, 18, 30, 32\n→ **Maximum Z = 32 at (4,4)**\n\n---\n\n**4. Types of Solutions:**\n\n• **Unique optimal:** One best corner point\n• **Multiple optimal:** Entire edge is optimal (parallel objective line)\n• **Unbounded:** Feasible region extends to infinity\n• **Infeasible:** No solution satisfies all constraints\n\n---\n\n**5. Applications in AI/ML:**\n\n• **Gradient Descent:** Iteratively minimize loss function\n• **Support Vector Machines:** Maximize margin (quadratic optimization)\n• **Linear Regression:** Minimize sum of squared errors\n• **Resource Allocation:** Schedule tasks, optimize budgets\n\n---\n\n**INAIO Tips:**\n• Practice the graphical method for 2-variable problems\n• Know how to identify corner points\n• Understand constraints as boundaries\n• Expect word problems requiring LP formulation`,
+      },
+      {
+        id: "n-op-2",
+        title: "Maxima, Minima & Gradient Descent",
+        icon: "🗒️",
+        content: `**Finding maxima and minima** is central to training ML models.\n\n---\n\n**1. Calculus-Based Optimization:**\n\n• **Critical points:** Where f'(x) = 0 or undefined\n• **Local maximum:** f'(x) changes from + to −\n• **Local minimum:** f'(x) changes from − to +\n• **Second derivative test:**\n  - f''(x) > 0 → local minimum (concave up)\n  - f''(x) < 0 → local maximum (concave down)\n  - f''(x) = 0 → inconclusive\n\n---\n\n**2. Global vs Local Optima:**\n\n• **Global minimum:** Lowest point across entire domain\n• **Local minimum:** Lowest in a neighborhood\n• **Convex functions:** Have ONE global minimum (no local traps)\n  Examples: x², ||Ax−b||²\n• **Non-convex functions:** May have many local minima\n  Examples: Neural network loss surfaces\n\n---\n\n**3. Gradient Descent:**\n\nThe workhorse of ML optimization.\n\n**Algorithm:**\n1. Start at random point x₀\n2. Compute gradient: ∇f(x) (direction of steepest increase)\n3. Update: x_{t+1} = x_t − α × ∇f(x_t)\n4. Repeat until convergence\n\n**Learning rate α:**\n• Too large → overshoots, diverges\n• Too small → very slow convergence\n• Just right → smooth convergence\n\n---\n\n**4. Constrained Optimization:**\n\n**Lagrange Multipliers:**\nOptimize f(x,y) subject to g(x,y) = 0\n\nMethod: Solve ∇f = λ∇g and g(x,y) = 0\n\n• λ is the Lagrange multiplier\n• Measures how much the constraint "costs"\n\n---\n\n**5. INAIO Tips:**\n\n• Understand maxima/minima conceptually\n• Know what gradient descent does at a high level\n• Practice finding critical points of simple functions\n• Understand why convexity matters for optimization`,
+      },
+    ],
+    worksheets: [
+      { id: "w-op-1", title: "Linear Programming Basics", description: "Formulate and solve LP problems graphically", difficulty: "Beginner", questionCount: 10, estimatedTime: "20 min", topics: ["LP", "Constraints"] },
+      { id: "w-op-2", title: "Maxima & Minima", description: "Find critical points and classify them", difficulty: "Intermediate", questionCount: 10, estimatedTime: "25 min", topics: ["Calculus", "Optimization"] },
+      { id: "w-op-3", title: "Gradient Descent Concepts", description: "Understand iterative optimization for ML", difficulty: "Advanced", questionCount: 8, estimatedTime: "25 min", topics: ["Gradient Descent", "Learning Rate"] },
+    ],
+  },
+  {
+    id: "data-representation",
+    title: "Data Representation & Visualization",
+    icon: "📊",
+    description: "Base-n coding, graphs, charts, and data interpretation",
+    notes: [
+      {
+        id: "n-dr-1",
+        title: "Base-N Number Systems — Complete Guide",
+        icon: "📖",
+        content: `**Number bases** are different ways to represent numbers. Computers use binary, humans use decimal.\n\n---\n\n**1. Common Bases:**\n\n• **Binary (base 2):** Digits 0-1. Used by computers.\n  13₁₀ = 1101₂ (8+4+0+1)\n• **Octal (base 8):** Digits 0-7.\n  13₁₀ = 15₈ (1×8+5)\n• **Decimal (base 10):** Digits 0-9. Our everyday system.\n• **Hexadecimal (base 16):** Digits 0-9, A-F.\n  255₁₀ = FF₁₆ (15×16+15)\n\n---\n\n**2. Conversion: Decimal → Base N:**\n\nMethod: Repeatedly divide by N, record remainders bottom-to-top.\n\nExample: 25₁₀ → binary\n25÷2 = 12 R1\n12÷2 = 6 R0\n6÷2 = 3 R0\n3÷2 = 1 R1\n1÷2 = 0 R1\nRead bottom-up: 11001₂\n\n---\n\n**3. Conversion: Base N → Decimal:**\n\nMultiply each digit by its place value and sum.\n\n1101₂ = 1×2³ + 1×2² + 0×2¹ + 1×2⁰ = 8+4+0+1 = 13₁₀\n\n---\n\n**4. Binary Arithmetic:**\n\n• **Addition:** 0+0=0, 0+1=1, 1+0=1, 1+1=10 (carry 1)\n• **Subtraction:** Borrow as in decimal but base 2\n• **Multiplication:** Like decimal, shift and add\n\n---\n\n**5. Why It Matters for AI:**\n\n• Data encoding in computers\n• Understanding bit representations\n• Hash functions and data structures\n• Image pixel values (0-255 = 8 bits)\n\n---\n\n**INAIO Tips:**\n• Practice converting between binary, decimal, and hex\n• Know powers of 2 up to 2¹⁰ = 1024\n• Be comfortable with binary addition`,
+      },
+      {
+        id: "n-dr-2",
+        title: "Data Visualization & Interpretation — Complete Guide",
+        icon: "🗒️",
+        content: `**Data visualization** transforms raw data into visual representations for analysis and communication.\n\n---\n\n**1. Types of Charts:**\n\n**Bar Charts:**\n• Compare quantities across categories\n• Horizontal or vertical bars\n• Use when comparing discrete categories\n\n**Histograms:**\n• Show distribution of continuous data\n• X-axis: bins (ranges), Y-axis: frequency\n• Reveals shape: normal, skewed, bimodal\n\n**Pie Charts:**\n• Show proportions of a whole\n• Best for 3-5 categories\n• Avoid for comparing similar-sized segments\n\n**Scatter Plots:**\n• Show relationship between two variables\n• Identify: positive/negative correlation, clusters, outliers\n• Add trend line for regression analysis\n\n**Box Plots:**\n• Show median, Q1, Q3, min, max, outliers\n• Compare distributions across groups\n• Whiskers extend to 1.5×IQR\n\n**Line Charts:**\n• Show trends over time\n• Multiple lines for comparison\n• Good for continuous data\n\n---\n\n**2. Tabular Data:**\n\n• **Rows:** Individual records/observations\n• **Columns:** Features/variables\n• **Types:** Numerical (continuous, discrete), Categorical (nominal, ordinal)\n\n---\n\n**3. Entity-Relationship Diagrams:**\n\n• **Entities:** Objects (Student, Course)\n• **Relationships:** How entities connect (enrolls_in)\n• **Cardinality:** One-to-one, one-to-many, many-to-many\n• Used in database design and data modeling\n\n---\n\n**4. Hierarchical Data:**\n\n• **Tree structures:** Parent-child relationships\n• **Decision trees:** Visual ML model representation\n• **File systems:** Folder hierarchies\n• **Taxonomies:** Classification systems\n\n---\n\n**5. Reading Visualizations — Key Steps:**\n\n1. Read the title and axis labels\n2. Check the scale (linear? logarithmic?)\n3. Identify the main trend or pattern\n4. Note outliers or anomalies\n5. Consider what the visualization does NOT show\n6. Check for misleading scales or truncated axes\n\n---\n\n**6. Common Misleading Tricks:**\n\n• **Truncated Y-axis:** Makes small differences look huge\n• **Cherry-picked time ranges:** Show only favorable periods\n• **3D pie charts:** Distort proportions visually\n• **Dual axes:** Can suggest false correlations\n\n---\n\n**INAIO Tips:**\n• Practice interpreting all chart types\n• Know when each chart type is appropriate\n• Be able to extract statistics from visualizations\n• Watch for misleading representations`,
+      },
+    ],
+    worksheets: [
+      { id: "w-dr-1", title: "Number Base Conversions", description: "Convert between binary, decimal, octal, and hex", difficulty: "Beginner", questionCount: 12, estimatedTime: "20 min", topics: ["Binary", "Hexadecimal"] },
+      { id: "w-dr-2", title: "Chart Interpretation", description: "Extract insights from various chart types", difficulty: "Intermediate", questionCount: 10, estimatedTime: "25 min", topics: ["Bar Charts", "Scatter Plots"] },
+      { id: "w-dr-3", title: "Data Analysis Challenge", description: "Analyze datasets using tables and visualizations", difficulty: "Advanced", questionCount: 8, estimatedTime: "30 min", topics: ["Data Analysis", "Trends"] },
+    ],
+  },
+  {
+    id: "python-programming",
+    title: "Python Programming",
+    icon: "🐍",
+    description: "Syntax, NumPy, Pandas, Matplotlib, and scikit-learn",
+    notes: [
+      {
+        id: "n-py-1",
+        title: "Python Basics for INAIO",
+        icon: "📖",
+        content: `**Python** is the primary language for AI/ML. Stage 2 of INAIO tests Python skills.\n\n---\n\n**1. Core Syntax:**\n\n• **Variables:** x = 5 (no type declaration needed)\n• **Lists:** arr = [1, 2, 3] (mutable, ordered)\n• **Tuples:** t = (1, 2, 3) (immutable)\n• **Dictionaries:** d = {"key": "value"} (key-value pairs)\n• **Sets:** s = {1, 2, 3} (unique elements)\n\n---\n\n**2. Control Flow:**\n\n**If-Else:**\nif x > 0:\n    print("positive")\nelif x == 0:\n    print("zero")\nelse:\n    print("negative")\n\n**For Loops:**\nfor i in range(10):  # 0 to 9\n    print(i)\n\nfor item in my_list:\n    print(item)\n\n**While Loops:**\nwhile condition:\n    # do something\n    # update condition\n\n---\n\n**3. Functions:**\n\ndef greet(name, greeting="Hello"):\n    return f"{greeting}, {name}!"\n\n• **Default arguments:** greeting="Hello"\n• **Return values:** return statement\n• **Lambda:** square = lambda x: x**2\n\n---\n\n**4. List Comprehensions:**\n\nsquares = [x**2 for x in range(10)]\nevens = [x for x in range(20) if x % 2 == 0]\n\n---\n\n**5. File I/O:**\n\nwith open("data.csv", "r") as f:\n    content = f.read()\n\nwith open("output.txt", "w") as f:\n    f.write("Hello")\n\n---\n\n**6. Common Built-in Functions:**\n\n• len(), range(), enumerate(), zip()\n• sorted(), reversed(), map(), filter()\n• sum(), min(), max(), abs()\n• type(), isinstance(), str(), int(), float()\n\n---\n\n**INAIO Tips:**\n• Be comfortable reading Python code traces\n• Know list slicing: arr[1:3], arr[::-1]\n• Understand scope and mutability\n• Practice writing short functions`,
+      },
+      {
+        id: "n-py-2",
+        title: "NumPy & Pandas — Complete Guide",
+        icon: "🗒️",
+        content: `**NumPy** handles numerical computation. **Pandas** handles tabular data.\n\n---\n\n**1. NumPy Basics:**\n\nimport numpy as np\n\n• **Arrays:** a = np.array([1, 2, 3])\n• **Zeros/Ones:** np.zeros((3,3)), np.ones((2,4))\n• **Range:** np.arange(0, 10, 2) → [0, 2, 4, 6, 8]\n• **Linspace:** np.linspace(0, 1, 5) → [0, 0.25, 0.5, 0.75, 1]\n\n**Operations (vectorized):**\n• a + b, a * b, a ** 2 (element-wise)\n• np.dot(a, b) or a @ b (matrix multiply)\n• np.sum(), np.mean(), np.std(), np.max()\n• a.reshape(3, 4), a.T (transpose)\n\n**Broadcasting:**\n• Smaller array is "stretched" to match dimensions\n• a (3×1) + b (1×4) → result (3×4)\n\n---\n\n**2. Pandas Basics:**\n\nimport pandas as pd\n\n**Series:** 1D labeled array\ns = pd.Series([10, 20, 30], index=['a', 'b', 'c'])\n\n**DataFrame:** 2D labeled table\ndf = pd.DataFrame({"name": ["Alice", "Bob"], "score": [95, 87]})\n\n**Reading data:**\ndf = pd.read_csv("data.csv")\n\n**Exploring data:**\n• df.head(), df.tail(), df.shape\n• df.describe() — statistics\n• df.info() — types and nulls\n• df.columns, df.dtypes\n\n**Selecting data:**\n• df["column_name"] or df.column_name\n• df.iloc[0:5] — by position\n• df.loc[df["score"] > 90] — by condition\n\n**Operations:**\n• df.groupby("category").mean()\n• df.sort_values("score", ascending=False)\n• df.fillna(0), df.dropna()\n• df.merge(df2, on="id")\n\n---\n\n**3. Matplotlib & Seaborn:**\n\nimport matplotlib.pyplot as plt\nimport seaborn as sns\n\n**Basic plot:** plt.plot(x, y)\n**Scatter:** plt.scatter(x, y)\n**Bar:** plt.bar(categories, values)\n**Histogram:** plt.hist(data, bins=20)\n**Heatmap:** sns.heatmap(correlation_matrix)\n\n---\n\n**INAIO Tips:**\n• Know NumPy array operations and shapes\n• Be able to read Pandas code for data manipulation\n• Understand groupby and filtering\n• Practice interpreting visualization code`,
+      },
+      {
+        id: "n-py-3",
+        title: "Scikit-learn for ML — Complete Guide",
+        icon: "🔬",
+        content: `**scikit-learn** is Python's go-to library for machine learning.\n\n---\n\n**1. The sklearn Pattern:**\n\nEvery model follows the same API:\n\nfrom sklearn.model import ModelName\n\nmodel = ModelName(hyperparameters)\nmodel.fit(X_train, y_train)\npredictions = model.predict(X_test)\nscore = model.score(X_test, y_test)\n\n---\n\n**2. Data Splitting:**\n\nfrom sklearn.model_selection import train_test_split\n\nX_train, X_test, y_train, y_test = train_test_split(\n    X, y, test_size=0.2, random_state=42\n)\n\n---\n\n**3. Common Models:**\n\n**Linear Regression:**\nfrom sklearn.linear_model import LinearRegression\nmodel = LinearRegression()\n\n**K-Nearest Neighbors:**\nfrom sklearn.neighbors import KNeighborsClassifier\nmodel = KNeighborsClassifier(n_neighbors=5)\n\n**Decision Tree:**\nfrom sklearn.tree import DecisionTreeClassifier\nmodel = DecisionTreeClassifier(max_depth=5)\n\n**K-Means:**\nfrom sklearn.cluster import KMeans\nmodel = KMeans(n_clusters=3)\n\n---\n\n**4. Evaluation:**\n\nfrom sklearn.metrics import accuracy_score, confusion_matrix, classification_report\n\nprint(accuracy_score(y_test, predictions))\nprint(confusion_matrix(y_test, predictions))\nprint(classification_report(y_test, predictions))\n\n**Cross-validation:**\nfrom sklearn.model_selection import cross_val_score\nscores = cross_val_score(model, X, y, cv=5)\nprint(f"Mean accuracy: {scores.mean():.3f}")\n\n---\n\n**5. Preprocessing:**\n\nfrom sklearn.preprocessing import StandardScaler, LabelEncoder\n\nscaler = StandardScaler()\nX_scaled = scaler.fit_transform(X_train)\nX_test_scaled = scaler.transform(X_test)\n\n---\n\n**6. Pipelines:**\n\nfrom sklearn.pipeline import Pipeline\n\npipe = Pipeline([\n    ("scaler", StandardScaler()),\n    ("model", KNeighborsClassifier(n_neighbors=5))\n])\npipe.fit(X_train, y_train)\npipe.score(X_test, y_test)\n\n---\n\n**INAIO Tips:**\n• Know the fit/predict/score pattern\n• Understand train_test_split parameters\n• Be able to read sklearn code and predict output\n• Know which model to import for which task`,
+      },
+    ],
+    worksheets: [
+      { id: "w-py-1", title: "Python Syntax Quiz", description: "Test loops, functions, and data structures", difficulty: "Beginner", questionCount: 12, estimatedTime: "20 min", topics: ["Syntax", "Functions"] },
+      { id: "w-py-2", title: "NumPy & Pandas Operations", description: "Array manipulation and data wrangling", difficulty: "Intermediate", questionCount: 10, estimatedTime: "25 min", topics: ["NumPy", "Pandas"] },
+      { id: "w-py-3", title: "Scikit-learn Practice", description: "ML workflows using sklearn API", difficulty: "Advanced", questionCount: 10, estimatedTime: "30 min", topics: ["sklearn", "ML Pipeline"] },
+    ],
+  },
+  {
+    id: "nlp-cv-multimodal",
+    title: "NLP, CV & Multimodal",
+    icon: "🧠",
+    description: "Text/image preprocessing, embeddings, and common tasks",
+    notes: [
+      {
+        id: "n-nc-1",
+        title: "NLP Basics — Complete Guide",
+        icon: "📖",
+        content: `**Natural Language Processing (NLP)** enables machines to understand and process human language.\n\n---\n\n**1. Text Preprocessing:**\n\n• **Tokenization:** Split text into words/subwords\n  "I love AI" → ["I", "love", "AI"]\n• **Lowercasing:** Normalize case\n• **Stop word removal:** Remove "the", "is", "a", etc.\n• **Stemming:** Reduce to root: "running" → "run"\n• **Lemmatization:** Grammatically correct root: "better" → "good"\n• **Punctuation/special char removal**\n\n---\n\n**2. Text Representation:**\n\n**Bag of Words (BoW):**\n• Count word occurrences\n• Ignores word order\n• Sparse, high-dimensional vectors\n\n**TF-IDF:**\n• Weighs words by importance (see Famous Algorithms section)\n\n**Word Embeddings:**\n• Dense, low-dimensional vectors (50-300 dims)\n• Similar words → similar vectors\n• Word2Vec, GloVe, FastText\n• "king" - "man" + "woman" ≈ "queen"\n\n**Contextual Embeddings:**\n• Same word gets different vectors based on context\n• BERT, GPT produce contextual embeddings\n• "bank" near "river" ≠ "bank" near "money"\n\n---\n\n**3. Common NLP Tasks:**\n\n• **Text Classification:** Spam detection, sentiment analysis\n• **Named Entity Recognition (NER):** Find names, places, dates\n• **Machine Translation:** English → French\n• **Question Answering:** Read passage, answer question\n• **Text Summarization:** Condense long text\n• **Text Generation:** Write new text (GPT-style)\n\n---\n\n**4. Pretrained Models:**\n\n• **BERT:** Bidirectional, great for understanding\n• **GPT:** Autoregressive, great for generation\n• **Transfer learning:** Fine-tune pretrained model on your task\n\n---\n\n**INAIO Tips:**\n• Know preprocessing steps and why they matter\n• Understand BoW vs embeddings conceptually\n• Know common NLP tasks and which models suit them\n• Understand what "pretrained" means`,
+      },
+      {
+        id: "n-nc-2",
+        title: "Computer Vision & Multimodal AI",
+        icon: "🗒️",
+        content: `**Computer Vision (CV)** enables machines to interpret visual information.\n\n---\n\n**1. Image Preprocessing:**\n\n• **Resizing:** Standard input size (e.g., 224×224)\n• **Normalization:** Scale pixel values to [0,1] or [-1,1]\n• **Data Augmentation:** Flip, rotate, crop, color jitter\n  - Creates more training data\n  - Reduces overfitting\n• **Grayscale conversion:** 3 channels → 1 channel\n\n---\n\n**2. Image Representation:**\n\n• **Pixels:** Raw values (height × width × channels)\n  - Grayscale: 1 channel (0-255)\n  - RGB: 3 channels\n• **Feature maps:** Learned representations from CNNs\n• **Image embeddings:** Dense vectors from pretrained models\n\n---\n\n**3. Common CV Tasks:**\n\n• **Classification:** What is in the image? (cat, dog, car)\n• **Object Detection:** Where are objects? (bounding boxes)\n• **Segmentation:** Pixel-level classification\n  - Semantic: Label each pixel by class\n  - Instance: Distinguish individual objects\n• **Image Retrieval:** Find similar images\n• **Generation:** Create new images (GANs, diffusion)\n\n---\n\n**4. Pretrained Vision Models:**\n\n• **ResNet, VGG, EfficientNet:** Image classification\n• **YOLO, Faster R-CNN:** Object detection\n• **U-Net:** Segmentation\n• **ViT (Vision Transformer):** Transformer-based vision\n\n---\n\n**5. Multimodal AI:**\n\nCombines text + images (or other modalities).\n\n• **CLIP:** Links images and text in shared embedding space\n• **Image Captioning:** Generate text describing images\n• **Visual QA:** Answer questions about images\n• **Text-to-Image:** DALL-E, Stable Diffusion\n\n**Key concept:** Shared embedding space allows cross-modal search (text query → image results).\n\n---\n\n**INAIO Tips:**\n• Understand image as a matrix of pixel values\n• Know the difference between classification, detection, segmentation\n• Understand data augmentation and why it helps\n• Know what pretrained models offer (transfer learning)`,
+      },
+    ],
+    worksheets: [
+      { id: "w-nc-1", title: "NLP Fundamentals", description: "Tokenization, embeddings, and text tasks", difficulty: "Beginner", questionCount: 10, estimatedTime: "20 min", topics: ["Tokenization", "Embeddings"] },
+      { id: "w-nc-2", title: "Computer Vision Quiz", description: "Image processing and CV task types", difficulty: "Intermediate", questionCount: 10, estimatedTime: "20 min", topics: ["Image Processing", "CNN"] },
+      { id: "w-nc-3", title: "Multimodal AI Challenge", description: "Cross-modal tasks and pretrained models", difficulty: "Advanced", questionCount: 8, estimatedTime: "25 min", topics: ["CLIP", "Transfer Learning"] },
+    ],
+  },
+  {
+    id: "gen-ai",
+    title: "Gen AI Tool Use",
+    icon: "✨",
+    description: "Effective use of AI assistants for problem-solving",
+    notes: [
+      {
+        id: "n-ga-1",
+        title: "Using AI Assistants Effectively",
+        icon: "📖",
+        content: `**AI Assistants** like ChatGPT, Gemini, and Claude are powerful tools — but using them effectively is a skill.\n\n---\n\n**1. Prompt Engineering Basics:**\n\n• **Be specific:** "Explain PCA in 3 sentences" > "Tell me about PCA"\n• **Provide context:** "I'm a high school student preparing for INAIO..."\n• **Use examples:** "Like this: input→output. Now do this: new_input→?"\n• **Assign a role:** "You are a math tutor. Explain step by step..."\n• **Iterate:** Refine your prompt based on the response\n\n---\n\n**2. Effective Problem-Solving with AI:**\n\n**Step 1: Understand the problem yourself first**\n• Read the question carefully\n• Identify what's being asked\n• Note the constraints and given information\n\n**Step 2: Formulate a clear prompt**\n• State the problem precisely\n• Mention what approach you've tried\n• Ask for specific help (not just "solve this")\n\n**Step 3: Verify the output**\n• Check the reasoning, not just the answer\n• Test with known examples\n• Look for logical errors\n\n---\n\n**3. Common AI Use Cases for INAIO:**\n\n• **Explaining concepts:** "Explain Bayes' theorem with a real-world example"\n• **Code debugging:** "This Python code gives wrong output. Find the bug."\n• **Data analysis:** "Given this dataset, what preprocessing steps are needed?"\n• **Problem solving:** "Walk me through solving this optimization problem"\n\n---\n\n**4. Limitations to Know:**\n\n• AI can hallucinate (make up facts)\n• Math calculations may have errors\n• Answers may be plausible but wrong\n• Always verify with trusted sources\n\n---\n\n**5. Documentation Usage:**\n\n• Know how to read API documentation\n• Use official docs over Stack Overflow answers\n• Understand code examples in documentation\n• Know common Python library docs (NumPy, Pandas, sklearn)\n\n---\n\n**INAIO Tips:**\n• Practice crafting precise prompts\n• Learn to verify AI-generated solutions\n• Use AI as a tutor, not just an answer machine\n• Know when AI is helpful vs when to rely on your own skills`,
+      },
+    ],
+    worksheets: [
+      { id: "w-ga-1", title: "Prompt Engineering Quiz", description: "Craft effective prompts and evaluate AI outputs", difficulty: "Beginner", questionCount: 10, estimatedTime: "15 min", topics: ["Prompts", "AI Tools"] },
+      { id: "w-ga-2", title: "AI-Assisted Problem Solving", description: "Use AI tools strategically for INAIO problems", difficulty: "Intermediate", questionCount: 8, estimatedTime: "20 min", topics: ["Problem Solving", "Verification"] },
     ],
   },
 ];
