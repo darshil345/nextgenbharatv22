@@ -1,8 +1,6 @@
-Got it — here is your refined, focused, professional description with NO volunteer section and a strong emphasis on AI skills shaping the future.
 
-⸻
 
-🌍 NextGen Bharat V2 – Complete App Description
+🌍 NextGen Bharat V2
 
 NextGen Bharat V2 is a modern digital learning platform designed to equip students with essential digital and AI skills required to thrive in the future. Built with a vision to transform education, the platform focuses on developing intelligent, responsible, and future-ready learners.
 
