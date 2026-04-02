@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { PRACTICE_CATEGORIES, type PracticeCategory, type StudyNote, type Worksheet } from "@/data/practiceMaterials";
+import { IOAI_PRACTICE_CATEGORIES } from "@/data/ioaiPracticeMaterials";
 import WorksheetQuiz from "@/components/ai-olympiad/WorksheetQuiz";
 
 const DifficultyBadge = ({ difficulty }: { difficulty: string }) => {
@@ -47,10 +48,41 @@ const NoteViewer = ({ note, onBack }: { note: StudyNote; onBack: () => void }) =
   </motion.div>
 );
 
+const CategoryList = ({ categories, onSelect }: { categories: PracticeCategory[]; onSelect: (cat: PracticeCategory) => void }) => (
+  <div className="grid gap-3">
+    {categories.map((cat, idx) => (
+      <motion.div key={cat.id} initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }}>
+        <Card className="cursor-pointer hover:shadow-md transition-all hover:border-primary/30" onClick={() => onSelect(cat)}>
+          <CardContent className="p-4 flex items-center gap-4">
+            <div className="w-12 h-12 rounded-2xl gradient-hero flex items-center justify-center text-2xl shrink-0">{cat.icon}</div>
+            <div className="flex-1">
+              <h2 className="font-heading font-bold text-foreground text-sm">{cat.title}</h2>
+              <p className="text-xs text-muted-foreground">{cat.description}</p>
+              <div className="flex gap-2 mt-1.5">
+                <Badge variant="outline" className="text-[10px] gap-1"><BookOpen size={10} /> {cat.notes.length} notes</Badge>
+                <Badge variant="outline" className="text-[10px] gap-1"><FileText size={10} /> {cat.worksheets.length} worksheets</Badge>
+              </div>
+            </div>
+            <ChevronRight size={18} className="text-muted-foreground" />
+          </CardContent>
+        </Card>
+      </motion.div>
+    ))}
+  </div>
+);
+
 const Practice = () => {
+  const [track, setTrack] = useState<"inaio" | "ioai">("inaio");
   const [selectedCategory, setSelectedCategory] = useState<PracticeCategory | null>(null);
   const [selectedNote, setSelectedNote] = useState<StudyNote | null>(null);
   const [activeWorksheet, setActiveWorksheet] = useState<Worksheet | null>(null);
+
+  const handleTrackChange = (val: string) => {
+    setTrack(val as "inaio" | "ioai");
+    setSelectedCategory(null);
+    setSelectedNote(null);
+    setActiveWorksheet(null);
+  };
 
   if (activeWorksheet) {
     return <div className="max-w-2xl mx-auto"><WorksheetQuiz worksheet={activeWorksheet} onBack={() => setActiveWorksheet(null)} /></div>;
@@ -133,28 +165,21 @@ const Practice = () => {
           <Sparkles className="text-secondary" size={14} />
         </div>
         <h1 className="font-heading text-2xl font-bold text-foreground">Study Materials</h1>
-        <p className="text-sm text-muted-foreground mt-1">Notes, worksheets, and practice problems for INAIO prep</p>
+        <p className="text-sm text-muted-foreground mt-1">Notes, worksheets, and practice problems</p>
       </motion.div>
-      <div className="grid gap-3">
-        {PRACTICE_CATEGORIES.map((cat, idx) => (
-          <motion.div key={cat.id} initial={{ opacity: 0, y: 15 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: idx * 0.05 }}>
-            <Card className="cursor-pointer hover:shadow-md transition-all hover:border-primary/30" onClick={() => setSelectedCategory(cat)}>
-              <CardContent className="p-4 flex items-center gap-4">
-                <div className="w-12 h-12 rounded-2xl gradient-hero flex items-center justify-center text-2xl shrink-0">{cat.icon}</div>
-                <div className="flex-1">
-                  <h2 className="font-heading font-bold text-foreground text-sm">{cat.title}</h2>
-                  <p className="text-xs text-muted-foreground">{cat.description}</p>
-                  <div className="flex gap-2 mt-1.5">
-                    <Badge variant="outline" className="text-[10px] gap-1"><BookOpen size={10} /> {cat.notes.length} notes</Badge>
-                    <Badge variant="outline" className="text-[10px] gap-1"><FileText size={10} /> {cat.worksheets.length} worksheets</Badge>
-                  </div>
-                </div>
-                <ChevronRight size={18} className="text-muted-foreground" />
-              </CardContent>
-            </Card>
-          </motion.div>
-        ))}
-      </div>
+
+      <Tabs value={track} onValueChange={handleTrackChange} className="w-full">
+        <TabsList className="w-full mb-4">
+          <TabsTrigger value="inaio" className="flex-1 gap-2 font-bold">🇮🇳 INAIO</TabsTrigger>
+          <TabsTrigger value="ioai" className="flex-1 gap-2 font-bold">🌍 IOAI</TabsTrigger>
+        </TabsList>
+        <TabsContent value="inaio">
+          <CategoryList categories={PRACTICE_CATEGORIES} onSelect={setSelectedCategory} />
+        </TabsContent>
+        <TabsContent value="ioai">
+          <CategoryList categories={IOAI_PRACTICE_CATEGORIES} onSelect={setSelectedCategory} />
+        </TabsContent>
+      </Tabs>
     </div>
   );
 };

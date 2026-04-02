@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { WORKSHEET_QUESTIONS } from "@/data/worksheetQuestions";
+import { IOAI_WORKSHEET_QUESTIONS } from "@/data/ioaiWorksheetQuestions";
 import type { Worksheet } from "@/data/practiceMaterials";
 
 const TIMER_SECONDS = 45;
@@ -16,7 +17,8 @@ interface WorksheetQuizProps {
 }
 
 const WorksheetQuiz = ({ worksheet, onBack }: WorksheetQuizProps) => {
-  const questionSet = WORKSHEET_QUESTIONS.find(q => q.worksheetId === worksheet.id);
+  const questionSet = WORKSHEET_QUESTIONS.find(q => q.worksheetId === worksheet.id)
+    || IOAI_WORKSHEET_QUESTIONS.find(q => q.worksheetId === worksheet.id);
   const questions = questionSet?.questions || [];
 
   const [currentQ, setCurrentQ] = useState(0);
