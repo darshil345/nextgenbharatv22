@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { WORKSHEET_QUESTIONS } from "@/data/worksheetQuestions";
+import { IOAI_WORKSHEET_QUESTIONS } from "@/data/ioaiWorksheetQuestions";
 import type { Worksheet } from "@/data/practiceMaterials";
 
 const TIMER_SECONDS = 45;
