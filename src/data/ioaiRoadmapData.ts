@@ -15,6 +15,7 @@ export const IOAI_ROADMAP_STAGES: RoadmapStage[] = [
           { id: "io-la-1", title: "Vectors & Matrices", description: "Operations, dot products, matrix multiply", xpReward: 25, difficulty: "Easy", questionCount: 5 },
           { id: "io-la-2", title: "Eigenvalues & Eigenvectors", description: "Compute eigendecomposition", xpReward: 40, difficulty: "Medium", questionCount: 5 },
           { id: "io-la-3", title: "SVD & Factorization", description: "Singular value decomposition applications", xpReward: 50, difficulty: "Hard", questionCount: 5 },
+          { id: "io-la-4", title: "LA in Neural Networks", description: "Attention matrices, batch ops, embeddings", xpReward: 55, difficulty: "Hard", questionCount: 5 },
         ],
       },
       {
@@ -25,6 +26,7 @@ export const IOAI_ROADMAP_STAGES: RoadmapStage[] = [
           { id: "io-co-1", title: "Gradients & Partial Derivatives", description: "Compute gradients of multivariate functions", xpReward: 30, difficulty: "Easy", questionCount: 5 },
           { id: "io-co-2", title: "Chain Rule & Backprop Math", description: "Apply chain rule to neural network layers", xpReward: 40, difficulty: "Medium", questionCount: 5 },
           { id: "io-co-3", title: "Gradient Descent Variants", description: "SGD, Adam, RMSProp, learning rate schedules", xpReward: 50, difficulty: "Hard", questionCount: 5 },
+          { id: "io-co-4", title: "Jacobians & Hessians", description: "Second-order derivatives and Newton's method", xpReward: 55, difficulty: "Hard", questionCount: 5 },
         ],
       },
       {
@@ -35,6 +37,17 @@ export const IOAI_ROADMAP_STAGES: RoadmapStage[] = [
           { id: "io-ps-1", title: "Distributions & MLE", description: "Gaussian, Bernoulli, maximum likelihood", xpReward: 30, difficulty: "Easy", questionCount: 5 },
           { id: "io-ps-2", title: "Bayesian Inference", description: "Prior, posterior, MAP estimation", xpReward: 40, difficulty: "Medium", questionCount: 5 },
           { id: "io-ps-3", title: "Information Theory", description: "Entropy, cross-entropy, KL divergence", xpReward: 50, difficulty: "Hard", questionCount: 5 },
+          { id: "io-ps-4", title: "Hypothesis Testing", description: "p-values, confidence intervals, A/B tests", xpReward: 45, difficulty: "Medium", questionCount: 5 },
+        ],
+      },
+      {
+        id: "ioai-python-tools",
+        title: "Python for AI",
+        icon: "🐍",
+        exercises: [
+          { id: "io-py-1", title: "NumPy Essentials", description: "Vectorized ops, broadcasting, indexing", xpReward: 25, difficulty: "Easy", questionCount: 5 },
+          { id: "io-py-2", title: "Pandas & Data Wrangling", description: "DataFrames, groupby, feature engineering", xpReward: 35, difficulty: "Medium", questionCount: 5 },
+          { id: "io-py-3", title: "Advanced Python", description: "Generators, decorators, context managers", xpReward: 40, difficulty: "Medium", questionCount: 5 },
         ],
       },
       {
@@ -45,6 +58,7 @@ export const IOAI_ROADMAP_STAGES: RoadmapStage[] = [
           { id: "io-pt-1", title: "Tensors & Autograd", description: "Tensor ops, computational graphs, .backward()", xpReward: 25, difficulty: "Easy", questionCount: 5 },
           { id: "io-pt-2", title: "nn.Module & Training Loops", description: "Custom models, DataLoader, optimizers", xpReward: 40, difficulty: "Medium", questionCount: 5 },
           { id: "io-pt-3", title: "Advanced PyTorch", description: "Custom datasets, checkpointing, GPU training", xpReward: 50, difficulty: "Hard", questionCount: 5 },
+          { id: "io-pt-4", title: "Experiment Management", description: "TensorBoard, hyperparameter search, reproducibility", xpReward: 40, difficulty: "Medium", questionCount: 5 },
         ],
       },
       {
@@ -56,6 +70,7 @@ export const IOAI_ROADMAP_STAGES: RoadmapStage[] = [
           { id: "io-ml-2", title: "Trees & Ensembles", description: "Random Forest, XGBoost, feature importance", xpReward: 35, difficulty: "Medium", questionCount: 5 },
           { id: "io-ml-3", title: "SVM & Clustering", description: "Kernel SVM, K-Means, DBSCAN", xpReward: 40, difficulty: "Medium", questionCount: 5 },
           { id: "io-ml-4", title: "Model Selection & Evaluation", description: "Cross-validation, bias-variance, ROC/AUC", xpReward: 50, difficulty: "Hard", questionCount: 5 },
+          { id: "io-ml-5", title: "Feature Engineering & Interpretability", description: "SHAP, LIME, feature selection", xpReward: 45, difficulty: "Hard", questionCount: 5 },
         ],
       },
     ],
@@ -74,6 +89,7 @@ export const IOAI_ROADMAP_STAGES: RoadmapStage[] = [
           { id: "io-nn-1", title: "Perceptrons & Activations", description: "ReLU, GELU, Sigmoid, Tanh, Swish", xpReward: 25, difficulty: "Easy", questionCount: 5 },
           { id: "io-nn-2", title: "Backpropagation", description: "Forward pass, loss computation, gradient flow", xpReward: 40, difficulty: "Medium", questionCount: 5 },
           { id: "io-nn-3", title: "Regularization & Normalization", description: "Dropout, batch norm, layer norm, weight decay", xpReward: 45, difficulty: "Medium", questionCount: 5 },
+          { id: "io-nn-4", title: "Loss Functions Deep Dive", description: "CE, BCE, MSE, Focal, Huber, Dice", xpReward: 40, difficulty: "Medium", questionCount: 5 },
         ],
       },
       {
@@ -84,6 +100,7 @@ export const IOAI_ROADMAP_STAGES: RoadmapStage[] = [
           { id: "io-cn-1", title: "Convolution Mechanics", description: "Filters, stride, padding, pooling", xpReward: 30, difficulty: "Easy", questionCount: 5 },
           { id: "io-cn-2", title: "Classic Architectures", description: "LeNet, VGG, ResNet, skip connections", xpReward: 40, difficulty: "Medium", questionCount: 5 },
           { id: "io-cn-3", title: "Modern CNNs", description: "EfficientNet, ConvNeXt, receptive fields", xpReward: 50, difficulty: "Hard", questionCount: 5 },
+          { id: "io-cn-4", title: "CNN Parameter Calculations", description: "Compute params, output sizes, receptive fields", xpReward: 45, difficulty: "Hard", questionCount: 5 },
         ],
       },
       {
@@ -104,6 +121,7 @@ export const IOAI_ROADMAP_STAGES: RoadmapStage[] = [
           { id: "io-tf-1", title: "Self-Attention Mechanism", description: "Q, K, V matrices, scaled dot-product", xpReward: 35, difficulty: "Medium", questionCount: 5 },
           { id: "io-tf-2", title: "Multi-Head Attention & Positional Encoding", description: "Concatenation, sinusoidal & learned positions", xpReward: 45, difficulty: "Medium", questionCount: 5 },
           { id: "io-tf-3", title: "BERT, GPT & ViT", description: "Pre-training objectives, fine-tuning strategies", xpReward: 55, difficulty: "Hard", questionCount: 5 },
+          { id: "io-tf-4", title: "Efficient Attention", description: "Flash attention, sparse attention, linear attention", xpReward: 50, difficulty: "Hard", questionCount: 5 },
         ],
       },
       {
@@ -114,6 +132,7 @@ export const IOAI_ROADMAP_STAGES: RoadmapStage[] = [
           { id: "io-gm-1", title: "VAEs & GANs", description: "Latent spaces, adversarial training, mode collapse", xpReward: 40, difficulty: "Medium", questionCount: 5 },
           { id: "io-gm-2", title: "Diffusion Models", description: "DDPM, noise scheduling, denoising", xpReward: 50, difficulty: "Hard", questionCount: 5 },
           { id: "io-gm-3", title: "Evaluation Metrics", description: "FID, IS, CLIP score, human evaluation", xpReward: 45, difficulty: "Hard", questionCount: 5 },
+          { id: "io-gm-4", title: "Flow Models & Advanced Generation", description: "Normalizing flows, score-based models", xpReward: 55, difficulty: "Hard", questionCount: 5 },
         ],
       },
     ],
@@ -131,6 +150,7 @@ export const IOAI_ROADMAP_STAGES: RoadmapStage[] = [
         exercises: [
           { id: "io-ic-1", title: "Data Augmentation", description: "CutOut, MixUp, CutMix, RandAugment", xpReward: 30, difficulty: "Easy", questionCount: 5 },
           { id: "io-ic-2", title: "Transfer Learning", description: "Fine-tuning pretrained models, feature extraction", xpReward: 40, difficulty: "Medium", questionCount: 5 },
+          { id: "io-ic-3", title: "Fine-Grained & Multi-Label", description: "Fine-grained classification, multi-label strategies", xpReward: 45, difficulty: "Medium", questionCount: 5 },
         ],
       },
       {
@@ -159,6 +179,7 @@ export const IOAI_ROADMAP_STAGES: RoadmapStage[] = [
         exercises: [
           { id: "io-vr-1", title: "Contrastive Learning", description: "SimCLR, MoCo, self-supervised methods", xpReward: 45, difficulty: "Medium", questionCount: 5 },
           { id: "io-vr-2", title: "CLIP & Zero-Shot", description: "Vision-language alignment, zero-shot classification", xpReward: 55, difficulty: "Hard", questionCount: 5 },
+          { id: "io-vr-3", title: "DINO & MAE", description: "Self-distillation, masked autoencoders", xpReward: 50, difficulty: "Hard", questionCount: 5 },
         ],
       },
       {
@@ -185,6 +206,7 @@ export const IOAI_ROADMAP_STAGES: RoadmapStage[] = [
         exercises: [
           { id: "io-tp-1", title: "Tokenization Methods", description: "BPE, WordPiece, SentencePiece", xpReward: 30, difficulty: "Easy", questionCount: 5 },
           { id: "io-tp-2", title: "Word & Contextual Embeddings", description: "Word2Vec, GloVe, BERT embeddings", xpReward: 40, difficulty: "Medium", questionCount: 5 },
+          { id: "io-tp-3", title: "Sentence Embeddings", description: "Sentence-BERT, pooling strategies, retrieval", xpReward: 45, difficulty: "Medium", questionCount: 5 },
         ],
       },
       {
@@ -204,6 +226,7 @@ export const IOAI_ROADMAP_STAGES: RoadmapStage[] = [
         exercises: [
           { id: "io-lm-1", title: "Decoding & Prompting", description: "Greedy, beam, nucleus; prompt engineering", xpReward: 35, difficulty: "Medium", questionCount: 5 },
           { id: "io-lm-2", title: "Fine-tuning: LoRA & RLHF", description: "Parameter-efficient tuning, alignment", xpReward: 55, difficulty: "Hard", questionCount: 5 },
+          { id: "io-lm-3", title: "LLM Evaluation & Safety", description: "Perplexity, BLEU, BERTScore, alignment", xpReward: 50, difficulty: "Hard", questionCount: 5 },
         ],
       },
       {
@@ -213,6 +236,7 @@ export const IOAI_ROADMAP_STAGES: RoadmapStage[] = [
         exercises: [
           { id: "io-au-1", title: "Spectrograms & Features", description: "Mel-spectrograms, MFCCs, audio classification", xpReward: 35, difficulty: "Medium", questionCount: 5 },
           { id: "io-au-2", title: "ASR & TTS", description: "CTC decoding, Whisper architecture", xpReward: 50, difficulty: "Hard", questionCount: 5 },
+          { id: "io-au-3", title: "Music & Audio Generation", description: "Audio synthesis, music generation models", xpReward: 45, difficulty: "Hard", questionCount: 5 },
         ],
       },
       {
@@ -222,6 +246,7 @@ export const IOAI_ROADMAP_STAGES: RoadmapStage[] = [
         exercises: [
           { id: "io-mm-1", title: "Vision-Language Models", description: "CLIP, BLIP, LLaVA architectures", xpReward: 45, difficulty: "Medium", questionCount: 5 },
           { id: "io-mm-2", title: "VQA & Captioning", description: "Visual question answering, image captioning", xpReward: 50, difficulty: "Hard", questionCount: 5 },
+          { id: "io-mm-3", title: "Cross-Modal Retrieval", description: "Text→image, image→text retrieval systems", xpReward: 50, difficulty: "Hard", questionCount: 5 },
         ],
       },
     ],

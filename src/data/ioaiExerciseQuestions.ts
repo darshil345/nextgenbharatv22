@@ -25,6 +25,13 @@ export const IOAI_EXERCISE_QUESTIONS: Record<string, Question[]> = {
     { question: "SVD can be applied to:", options: ["Only square matrices", "Only symmetric matrices", "Any matrix", "Only invertible matrices"], correct: 2, explanation: "SVD exists for ANY m×n matrix, unlike eigendecomposition." },
     { question: "In recommender systems, SVD is used for:", options: ["Matrix factorization", "Sorting users", "Data deletion", "Password hashing"], correct: 0, explanation: "SVD factorizes the user-item rating matrix into latent factors." },
   ],
+  "io-la-4": [
+    { question: "In attention, QKᵀ has shape (n×d)(d×n) = ?", options: ["n×n", "d×d", "n×d", "d×n"], correct: 0, explanation: "Q is (n×d), Kᵀ is (d×n), so QKᵀ is (n×n) — attention between all pairs." },
+    { question: "Batch matrix multiply (B,N,D) × (B,D,M) gives:", options: ["(B,N,M)", "(B,D,D)", "(N,M)", "(B,N,D)"], correct: 0, explanation: "Batched matmul: multiply the N×D and D×M for each of B batches → (B,N,M)." },
+    { question: "Kaiming initialization scales weights by:", options: ["1/n", "√(2/n)", "1/√n", "2/n"], correct: 1, explanation: "He/Kaiming init: W ~ N(0, √(2/fan_in)), designed for ReLU networks." },
+    { question: "In multi-head attention with h heads, each head uses dimension:", options: ["d_model", "d_model/h", "h", "d_model×h"], correct: 1, explanation: "Total dimension split across heads: d_k = d_model / h per head." },
+    { question: "Embedding matrix E maps vocab to:", options: ["Labels", "Dense vector space", "Sparse matrix", "Binary codes"], correct: 1, explanation: "Embedding matrix: (vocab_size × d) maps each token to a d-dimensional dense vector." },
+  ],
 
   // Calculus & Optimization
   "io-co-1": [
@@ -48,6 +55,66 @@ export const IOAI_EXERCISE_QUESTIONS: Record<string, Question[]> = {
     { question: "SGD with momentum adds:", options: ["Velocity term", "Second derivatives", "Random noise", "L2 penalty"], correct: 0, explanation: "Momentum accumulates a velocity vector that smooths gradient updates." },
     { question: "In non-convex optimization, a bigger problem than local minima is:", options: ["Global maxima", "Saddle points", "Convex regions", "Zero gradients at origin"], correct: 1, explanation: "In high dimensions, saddle points (gradient=0, mixed curvature) are far more common than local minima." },
   ],
+  "io-co-4": [
+    { question: "The Jacobian matrix J has entries J[i,j] = ?", options: ["∂²f/∂xᵢ∂xⱼ", "∂fᵢ/∂xⱼ", "fᵢ·xⱼ", "∂f/∂xᵢ + ∂f/∂xⱼ"], correct: 1, explanation: "Jacobian: J[i,j] = ∂fᵢ/∂xⱼ — matrix of all first-order partial derivatives of vector function." },
+    { question: "The Hessian is positive definite at a critical point → it's a:", options: ["Maximum", "Local minimum", "Saddle point", "Inflection point"], correct: 1, explanation: "Positive definite Hessian means all eigenvalues > 0, confirming a local minimum." },
+    { question: "Newton's method update rule is:", options: ["x - ∇f", "x - H⁻¹∇f", "x - f(x)", "x + H∇f"], correct: 1, explanation: "Newton: x_{new} = x - H⁻¹∇f, using second-order information for faster convergence." },
+    { question: "For f: Rⁿ → Rᵐ, the Jacobian has shape:", options: ["n×n", "m×n", "n×m", "m×m"], correct: 1, explanation: "Jacobian: m outputs × n inputs → shape (m × n)." },
+    { question: "The Hessian matrix is always:", options: ["Diagonal", "Symmetric", "Positive definite", "Sparse"], correct: 1, explanation: "H[i,j] = ∂²f/∂xᵢ∂xⱼ = ∂²f/∂xⱼ∂xᵢ = H[j,i] by Schwarz's theorem. Always symmetric." },
+  ],
+
+  // Probability & Information Theory
+  "io-ps-1": [
+    { question: "A Gaussian distribution is defined by:", options: ["Only mean", "Mean and variance", "Mode only", "Range"], correct: 1, explanation: "Gaussian N(μ, σ²) is fully characterized by mean μ and variance σ²." },
+    { question: "MLE stands for:", options: ["Mean Linear Estimation", "Maximum Likelihood Estimation", "Minimum Loss Evaluation", "Model Learning Efficiency"], correct: 1, explanation: "MLE finds parameters that maximize the probability of observing the data." },
+    { question: "Bernoulli distribution models:", options: ["Continuous values", "Binary outcomes (0 or 1)", "Counts", "Rankings"], correct: 1, explanation: "Bernoulli: P(X=1) = p, P(X=0) = 1-p. Single binary trial." },
+    { question: "MLE for coin flip with 7 heads out of 10 gives p̂ = ?", options: ["0.5", "0.7", "0.3", "1.0"], correct: 1, explanation: "MLE for Bernoulli: p̂ = (number of heads) / (total flips) = 7/10 = 0.7." },
+    { question: "The Central Limit Theorem says sample means are:", options: ["Uniform", "Approximately Gaussian for large n", "Bernoulli", "Exponential"], correct: 1, explanation: "CLT: regardless of population distribution, sample means → Gaussian as n → ∞." },
+  ],
+  "io-ps-2": [
+    { question: "Bayes' theorem: P(A|B) = ?", options: ["P(B|A)P(A)/P(B)", "P(A)P(B)", "P(A)+P(B)", "P(B)/P(A)"], correct: 0, explanation: "Bayes: P(A|B) = P(B|A)·P(A) / P(B). Updates prior with evidence." },
+    { question: "In Bayesian inference, the prior represents:", options: ["Data likelihood", "Belief before seeing data", "Final answer", "Loss function"], correct: 1, explanation: "Prior P(θ) encodes our belief about parameters BEFORE observing data." },
+    { question: "MAP estimation differs from MLE by:", options: ["Using more data", "Including a prior", "Being faster", "Using neural networks"], correct: 1, explanation: "MAP = argmax P(θ|data) = argmax P(data|θ)P(θ). MLE ignores the prior." },
+    { question: "Conjugate priors make:", options: ["Computation impossible", "Posterior same family as prior", "Prior irrelevant", "Data unnecessary"], correct: 1, explanation: "Conjugate prior + likelihood → posterior in same distribution family. Enables closed-form updates." },
+    { question: "With a strong prior and little data:", options: ["Posterior ≈ likelihood", "Posterior ≈ prior", "Posterior = uniform", "Prior is ignored"], correct: 1, explanation: "With little data, the prior dominates. More data → posterior shifts toward likelihood." },
+  ],
+  "io-ps-3": [
+    { question: "Entropy H(X) measures:", options: ["Mean value", "Uncertainty/information content", "Variance", "Correlation"], correct: 1, explanation: "Entropy H(X) = -ΣP(x)log P(x) measures the average uncertainty/information." },
+    { question: "Cross-entropy H(p,q) is used as:", options: ["Regularization", "Loss function in classification", "Learning rate", "Data augmentation"], correct: 1, explanation: "CE loss = -Σp(x)log q(x) measures how well q approximates true distribution p." },
+    { question: "KL divergence D(p||q) is always:", options: ["Negative", "Zero", "Non-negative (≥ 0)", "Symmetric"], correct: 2, explanation: "KL divergence ≥ 0 (Gibbs' inequality), = 0 iff p = q. NOT symmetric." },
+    { question: "Entropy of a fair coin (p=0.5):", options: ["0", "0.5", "1 bit", "2 bits"], correct: 2, explanation: "H = -0.5·log₂(0.5) - 0.5·log₂(0.5) = 1 bit. Maximum uncertainty for binary." },
+    { question: "KL divergence is NOT:", options: ["Non-negative", "Used in VAE loss", "Symmetric", "A divergence measure"], correct: 2, explanation: "D(p||q) ≠ D(q||p) in general. KL divergence is NOT symmetric." },
+  ],
+  "io-ps-4": [
+    { question: "A p-value of 0.03 means:", options: ["3% chance hypothesis is true", "3% probability of seeing data this extreme under null", "97% confidence", "Type II error rate"], correct: 1, explanation: "p-value = probability of observing data as extreme as (or more than) observed, assuming null is true." },
+    { question: "Type I error is:", options: ["Failing to reject false null", "Rejecting true null (false positive)", "Correct rejection", "Correct acceptance"], correct: 1, explanation: "Type I = false positive. Rejecting H₀ when it's actually true. Significance level α controls this." },
+    { question: "95% confidence interval means:", options: ["95% chance parameter is in interval", "95% of such intervals contain true parameter", "Parameter is 95% certain", "95% of data falls in interval"], correct: 1, explanation: "Frequentist: if we repeated the experiment, 95% of constructed CIs would contain the true parameter." },
+    { question: "In A/B testing, statistical power is:", options: ["Probability of Type I error", "Probability of detecting real effect", "Sample size", "Effect size"], correct: 1, explanation: "Power = 1 - P(Type II error) = probability of correctly rejecting false null hypothesis." },
+    { question: "Multiple comparisons correction (Bonferroni) does:", options: ["Increases power", "Divides α by number of tests", "Removes tests", "Combines p-values"], correct: 1, explanation: "Bonferroni: α_corrected = α/m for m tests. Controls family-wise error rate." },
+  ],
+
+  // Python for AI
+  "io-py-1": [
+    { question: "np.array([1,2,3]) * 2 gives:", options: ["[1,2,3,1,2,3]", "[2,4,6]", "Error", "[1,2,3,2]"], correct: 1, explanation: "NumPy vectorized: element-wise multiplication. [1*2, 2*2, 3*2] = [2,4,6]." },
+    { question: "Broadcasting allows:", options: ["Only same-shape operations", "Operations between different-shape arrays", "Only scalar operations", "Only matrix multiply"], correct: 1, explanation: "Broadcasting automatically expands dimensions for element-wise ops between compatible shapes." },
+    { question: "np.dot(a, b) for 1D arrays computes:", options: ["Outer product", "Dot product (scalar)", "Cross product", "Element-wise product"], correct: 1, explanation: "np.dot for 1D arrays = inner/dot product = Σaᵢbᵢ, returning a scalar." },
+    { question: "np.reshape(arr, (-1, 3)) with -1 means:", options: ["Delete dimension", "Auto-compute that dimension", "Set to 1", "Error"], correct: 1, explanation: "-1 tells NumPy to automatically calculate that dimension size from total elements." },
+    { question: "Boolean indexing arr[arr > 5] returns:", options: ["Indices where > 5", "Elements where > 5", "True/False array", "Shape info"], correct: 1, explanation: "Boolean indexing returns elements where the condition is True." },
+  ],
+  "io-py-2": [
+    { question: "df.groupby('col').mean() computes:", options: ["Global mean", "Mean per group", "Median per group", "Count per group"], correct: 1, explanation: "GroupBy splits data by 'col' values and computes mean within each group." },
+    { question: "pd.merge(df1, df2, on='id') performs:", options: ["Concatenation", "SQL-like join on 'id' column", "Sorting", "Filtering"], correct: 1, explanation: "merge performs an inner join by default, matching rows where 'id' values are equal." },
+    { question: "df.fillna(0) does:", options: ["Removes NaN rows", "Replaces NaN with 0", "Adds zeros", "Counts NaN"], correct: 1, explanation: "fillna replaces all NaN/missing values with the specified value (0 here)." },
+    { question: "One-hot encoding converts categories to:", options: ["Numbers 1,2,3...", "Binary indicator columns", "Probabilities", "Embeddings"], correct: 1, explanation: "One-hot: each category gets its own column with 0/1. 'cat' → [1,0,0], 'dog' → [0,1,0]." },
+    { question: "Feature scaling is important for:", options: ["Tree models", "Gradient-based models (SVM, NN)", "All models equally", "No models"], correct: 1, explanation: "Gradient-based models (NN, SVM, logistic regression) are sensitive to feature scales." },
+  ],
+  "io-py-3": [
+    { question: "A Python generator uses:", options: ["return", "yield", "print", "break"], correct: 1, explanation: "Generators use 'yield' to lazily produce values one at a time, saving memory." },
+    { question: "A decorator in Python:", options: ["Deletes a function", "Wraps a function to add behavior", "Renames a function", "Creates a class"], correct: 1, explanation: "@decorator syntax wraps a function, adding functionality before/after without modifying it." },
+    { question: "Context manager (with statement) ensures:", options: ["Faster execution", "Resource cleanup (e.g., file closing)", "Type checking", "Memory allocation"], correct: 1, explanation: "'with open(f) as file:' ensures file is closed even if an exception occurs." },
+    { question: "List comprehension [x**2 for x in range(5)] gives:", options: ["[0,1,2,3,4]", "[0,1,4,9,16]", "[1,4,9,16,25]", "[0,2,4,6,8]"], correct: 1, explanation: "[0², 1², 2², 3², 4²] = [0, 1, 4, 9, 16]." },
+    { question: "lambda x: x**2 creates:", options: ["A class", "An anonymous function", "A module", "A generator"], correct: 1, explanation: "lambda creates a small anonymous function: takes x, returns x²." },
+  ],
 
   // PyTorch
   "io-pt-1": [
@@ -70,6 +137,13 @@ export const IOAI_EXERCISE_QUESTIONS: Record<string, Question[]> = {
     { question: "torch.no_grad() is used during:", options: ["Training", "Inference/evaluation", "Data loading", "Model definition"], correct: 1, explanation: "torch.no_grad() disables gradient computation, saving memory during inference." },
     { question: "Custom Dataset class must implement:", options: ["__len__ and __getitem__", "forward and backward", "train and eval", "load and save"], correct: 0, explanation: "PyTorch Dataset requires __len__ (dataset size) and __getitem__ (get single sample)." },
     { question: "Mixed precision training uses:", options: ["int8 only", "float16 + float32", "float64", "Binary weights"], correct: 1, explanation: "Mixed precision uses float16 for speed with float32 for critical operations (loss scaling)." },
+  ],
+  "io-pt-4": [
+    { question: "TensorBoard logs are typically written using:", options: ["print()", "SummaryWriter", "logging.info()", "csv.writer()"], correct: 1, explanation: "PyTorch's SummaryWriter from torch.utils.tensorboard writes logs for TensorBoard visualization." },
+    { question: "Grid search checks:", options: ["Random subsets", "All combinations of hyperparameters", "One parameter at a time", "Only learning rate"], correct: 1, explanation: "Grid search exhaustively evaluates all combinations of specified hyperparameter values." },
+    { question: "Setting random seeds ensures:", options: ["Faster training", "Reproducible results", "Better accuracy", "Less memory usage"], correct: 1, explanation: "Fixed seeds (torch.manual_seed, np.random.seed) make experiments reproducible." },
+    { question: "Weights & Biases (wandb) provides:", options: ["Model architecture", "Experiment tracking & visualization", "Data storage only", "GPU allocation"], correct: 1, explanation: "W&B tracks experiments, hyperparameters, metrics, and provides interactive dashboards." },
+    { question: "Early stopping monitors:", options: ["Training loss only", "Validation metric to prevent overfitting", "GPU temperature", "Batch size"], correct: 1, explanation: "Early stopping halts training when validation performance stops improving, preventing overfitting." },
   ],
 
   // Classical ML
@@ -101,6 +175,13 @@ export const IOAI_EXERCISE_QUESTIONS: Record<string, Question[]> = {
     { question: "Stratified K-fold ensures:", options: ["Equal class distribution in each fold", "Random splits", "Largest test set", "No repetition"], correct: 0, explanation: "Stratified sampling maintains the same class ratio in each fold." },
     { question: "SHAP values explain:", options: ["Training speed", "Individual prediction contributions", "Dataset size", "Model architecture"], correct: 1, explanation: "SHAP assigns each feature a contribution to a specific prediction (game theory based)." },
   ],
+  "io-ml-5": [
+    { question: "LIME explains predictions by:", options: ["Global analysis", "Fitting local interpretable model around prediction", "Removing features", "Gradient analysis"], correct: 1, explanation: "LIME perturbs input around the prediction and fits a simple model to explain the local decision." },
+    { question: "Feature selection with mutual information measures:", options: ["Linear correlation", "Any statistical dependency between feature and target", "Feature variance", "Feature mean"], correct: 1, explanation: "Mutual information captures non-linear dependencies, unlike correlation." },
+    { question: "Recursive Feature Elimination (RFE):", options: ["Adds features", "Removes least important features iteratively", "Randomly selects", "Uses PCA"], correct: 1, explanation: "RFE trains model, removes least important feature, retrains, repeats until desired count." },
+    { question: "Target encoding for categorical features:", options: ["Uses one-hot", "Replaces category with mean target value", "Drops category", "Uses label encoding"], correct: 1, explanation: "Target encoding replaces each category with the mean of the target variable for that category." },
+    { question: "Permutation importance measures:", options: ["Gradient magnitude", "Drop in performance when feature is shuffled", "Feature variance", "Correlation with target"], correct: 1, explanation: "Shuffle one feature's values and measure how much model performance decreases." },
+  ],
 
   // ═══ Section 2: Neural Networks ═══
 
@@ -125,6 +206,13 @@ export const IOAI_EXERCISE_QUESTIONS: Record<string, Question[]> = {
     { question: "Weight decay is equivalent to:", options: ["L1 regularization", "L2 regularization", "Dropout", "Data augmentation"], correct: 1, explanation: "Weight decay adds λ||w||² to loss, which is L2 regularization." },
     { question: "ResNet's skip connection: y = F(x) + x helps with:", options: ["Speed", "Vanishing gradients", "Data augmentation", "Memory"], correct: 1, explanation: "Skip connections allow gradients to flow directly, preventing vanishing gradients in deep networks." },
   ],
+  "io-nn-4": [
+    { question: "Focal Loss was designed for:", options: ["Regression", "Class imbalance in detection", "Text generation", "Reinforcement learning"], correct: 1, explanation: "Focal Loss down-weights easy examples: -(1-pₜ)ᵧ·log(pₜ), originally for object detection." },
+    { question: "Dice Loss coefficient equals 1.0 when:", options: ["No overlap", "Perfect overlap", "50% overlap", "Random prediction"], correct: 1, explanation: "Dice = 2|A∩B|/(|A|+|B|) = 1.0 when prediction perfectly matches ground truth." },
+    { question: "Huber Loss combines:", options: ["L1 + L2", "MSE for small errors, MAE for large errors", "CE + MSE", "Focal + Dice"], correct: 1, explanation: "Huber: quadratic for small errors (smooth gradient), linear for large errors (robust to outliers)." },
+    { question: "Label smoothing changes hard targets [0,0,1,0] to:", options: ["[0.025,0.025,0.925,0.025]", "[0,0,1,0]", "[0.25,0.25,0.25,0.25]", "[0,0,0.5,0.5]"], correct: 0, explanation: "Label smoothing: spread ε across classes. With ε=0.1: (1-ε)=0.9 for correct, ε/(K-1) for rest." },
+    { question: "Contrastive Loss pulls together:", options: ["Random pairs", "Positive pairs (same class/augmentation)", "All examples", "Only negatives"], correct: 1, explanation: "Contrastive loss minimizes distance for positive pairs and maximizes for negative pairs." },
+  ],
 
   // CNNs
   "io-cn-1": [
@@ -147,6 +235,13 @@ export const IOAI_EXERCISE_QUESTIONS: Record<string, Question[]> = {
     { question: "Dilated (atrous) convolution increases:", options: ["Number of parameters", "Receptive field without more params", "Training speed", "Channel count"], correct: 1, explanation: "Dilated convolution inserts gaps in the kernel, enlarging receptive field without extra parameters." },
     { question: "ConvNeXt modernizes CNNs by borrowing from:", options: ["RNNs", "Transformers", "GANs", "Autoencoders"], correct: 1, explanation: "ConvNeXt adopts Transformer design choices (larger kernels, GELU, LayerNorm) for CNNs." },
     { question: "Depthwise separable convolution reduces:", options: ["Accuracy", "Parameter count significantly", "Input resolution", "Number of classes"], correct: 1, explanation: "Depthwise separable = depthwise conv + 1×1 pointwise conv. Much fewer parameters." },
+  ],
+  "io-cn-4": [
+    { question: "Conv2d with 5×5 kernel, 32→64 channels has params:", options: ["51,264", "51,200", "1,600", "3,264"], correct: 0, explanation: "5×5×32×64 + 64(bias) = 51,200 + 64 = 51,264 parameters." },
+    { question: "Two stacked 3×3 convs have same receptive field as:", options: ["3×3", "5×5", "7×7", "9×9"], correct: 1, explanation: "Two 3×3 = effective 5×5, with fewer parameters (2×3²=18 vs 5²=25 per channel)." },
+    { question: "Output size of 3×3 conv on 32×32 input, padding=1, stride=2:", options: ["32×32", "16×16", "15×15", "30×30"], correct: 1, explanation: "((32-3+2×1)/2)+1 = (31/2)+1 = 16. Output: 16×16." },
+    { question: "Global Average Pooling on (C,H,W) outputs:", options: ["(C,1,1)", "(1,H,W)", "(C,H,1)", "(1,1,1)"], correct: 0, explanation: "GAP averages each channel's spatial dimensions: (C,H,W) → (C,1,1)." },
+    { question: "Dilated conv with rate 2 and 3×3 kernel has effective kernel:", options: ["3×3", "5×5", "7×7", "4×4"], correct: 1, explanation: "Effective = k + (k-1)(r-1) = 3 + 2×1 = 5. Effective 5×5 receptive field." },
   ],
 
   // RNNs
@@ -194,6 +289,13 @@ export const IOAI_EXERCISE_QUESTIONS: Record<string, Question[]> = {
     { question: "BERT's [CLS] token is used for:", options: ["Padding", "Sequence-level classification", "Masking", "Positional info"], correct: 1, explanation: "[CLS] token's final representation is used as the aggregate sequence representation for classification." },
     { question: "Transfer learning with Transformers typically involves:", options: ["Training from scratch", "Fine-tuning pre-trained model on downstream task", "Only using embeddings", "Removing attention layers"], correct: 1, explanation: "Pre-train on large data, then fine-tune on smaller task-specific data." },
   ],
+  "io-tf-4": [
+    { question: "Flash Attention improves performance by:", options: ["Approximating attention", "IO-aware tiling of exact attention", "Removing softmax", "Using linear attention"], correct: 1, explanation: "Flash Attention computes exact attention but tiles the computation to minimize memory IO." },
+    { question: "Sparse attention reduces complexity to:", options: ["O(n²)", "O(n√n) or O(n·log n)", "O(1)", "O(n³)"], correct: 1, explanation: "Sparse patterns (local + global) attend to O(√n) or O(log n) tokens instead of all n." },
+    { question: "Linear attention replaces softmax with:", options: ["ReLU", "Kernel feature maps φ(Q)φ(K)ᵀ", "Sigmoid", "Nothing"], correct: 1, explanation: "Linear attention: φ(Q)(φ(K)ᵀV) can be computed in O(n·d²) instead of O(n²·d)." },
+    { question: "KV-cache in autoregressive generation stores:", options: ["All tokens", "Previous K and V to avoid recomputation", "Only the last token", "Gradients"], correct: 1, explanation: "KV-cache stores previous keys/values so only the new token's attention needs computation." },
+    { question: "Grouped Query Attention (GQA) uses:", options: ["One KV head per query head", "Fewer KV heads shared across query heads", "No attention", "Random grouping"], correct: 1, explanation: "GQA uses fewer K,V heads (shared across groups of Q heads) to reduce memory while maintaining quality." },
+  ],
 
   // Generative Models
   "io-gm-1": [
@@ -217,6 +319,13 @@ export const IOAI_EXERCISE_QUESTIONS: Record<string, Question[]> = {
     { question: "CLIP score for text-to-image measures:", options: ["Image resolution", "Text-image alignment", "Generation speed", "Model size"], correct: 1, explanation: "CLIP score measures how well the generated image matches the text prompt." },
     { question: "Human evaluation is still needed because:", options: ["Metrics are perfect", "Automatic metrics don't fully capture perceptual quality", "It's cheaper", "It's faster"], correct: 1, explanation: "FID/IS don't perfectly correlate with human perception of quality, coherence, and aesthetics." },
   ],
+  "io-gm-4": [
+    { question: "Normalizing flows transform a simple distribution through:", options: ["Random operations", "Invertible transformations", "Non-invertible layers", "Dropping dimensions"], correct: 1, explanation: "Flows use a chain of invertible transformations: simple distribution → complex distribution." },
+    { question: "Score-based models learn:", options: ["Class labels", "The gradient of the log probability (score function)", "Discriminator output", "Reconstruction error"], correct: 1, explanation: "Score-based models estimate ∇ₓ log p(x), the score function, for generation via Langevin dynamics." },
+    { question: "Autoregressive image generation (like PixelCNN) generates:", options: ["Entire image at once", "One pixel at a time conditioned on previous", "Patches", "Random noise"], correct: 1, explanation: "Autoregressive: model p(x) = Πp(xᵢ|x₁,...,xᵢ₋₁), generating sequentially." },
+    { question: "The reparameterization trick in VAE allows:", options: ["Sampling without gradients", "Backprop through sampling: z = μ + σ·ε", "Faster training", "Removing KL loss"], correct: 1, explanation: "Instead of sampling z ~ N(μ,σ²), compute z = μ + σ·ε where ε ~ N(0,1). Gradients flow through μ,σ." },
+    { question: "Energy-Based Models (EBMs) define:", options: ["Probabilities directly", "An energy function where low energy = high probability", "A discriminator", "A generator only"], correct: 1, explanation: "EBMs: p(x) ∝ exp(-E(x)). Low energy states are more probable." },
+  ],
 
   // ═══ Section 3: Computer Vision ═══
 
@@ -233,6 +342,13 @@ export const IOAI_EXERCISE_QUESTIONS: Record<string, Question[]> = {
     { question: "ImageNet pre-training provides:", options: ["Task-specific features", "General visual features transferable to other tasks", "Audio features", "Text features"], correct: 1, explanation: "ImageNet-pretrained models learn general features (edges, textures, objects) useful for many tasks." },
     { question: "When the target dataset is very different from ImageNet:", options: ["Fine-tune all layers", "Only use last layer", "Don't use transfer learning", "Freeze all layers"], correct: 0, explanation: "For dissimilar domains, fine-tuning more/all layers lets the model adapt its features." },
     { question: "Learning rate for fine-tuning is typically:", options: ["Same as pre-training", "Much smaller than pre-training", "Much larger", "Zero"], correct: 1, explanation: "Use smaller LR (e.g., 1e-5 vs 1e-3) to make small adjustments without destroying learned features." },
+  ],
+  "io-ic-3": [
+    { question: "Fine-grained classification distinguishes:", options: ["Dogs vs cats", "Dog breeds (very similar subcategories)", "Objects vs background", "Real vs fake"], correct: 1, explanation: "Fine-grained: distinguish very similar subcategories (bird species, car models, dog breeds)." },
+    { question: "Multi-label classification differs from multi-class by:", options: ["More classes", "Multiple labels can be active simultaneously", "Binary output", "Single label per image"], correct: 1, explanation: "Multi-label: an image can have multiple labels (e.g., 'beach' AND 'sunset' AND 'people')." },
+    { question: "For multi-label, the loss function is typically:", options: ["Softmax + CE", "Binary CE per label", "MSE", "Hinge loss"], correct: 1, explanation: "Multi-label uses independent sigmoid + BCE per label, not softmax (which assumes mutual exclusivity)." },
+    { question: "Attention pooling in fine-grained classification:", options: ["Averages everything", "Focuses on discriminative regions", "Removes pooling", "Uses max only"], correct: 1, explanation: "Attention mechanisms help focus on subtle distinguishing features (beak shape, wing pattern)." },
+    { question: "Test-Time Augmentation (TTA):", options: ["Augments training data", "Augments test input and averages predictions", "Reduces test time", "Removes augmentation"], correct: 1, explanation: "TTA: apply multiple augmentations to test image, average predictions for more robust output." },
   ],
 
   "io-od-1": [
@@ -286,6 +402,28 @@ export const IOAI_EXERCISE_QUESTIONS: Record<string, Question[]> = {
     { question: "For zero-shot with CLIP, class names are formatted as:", options: ["Numbers", "\"a photo of a {class}\"", "One-hot vectors", "Binary codes"], correct: 1, explanation: "Prompt templates like 'a photo of a {class}' convert class names to text for CLIP encoding." },
     { question: "CLIP is a foundation for:", options: ["Only classification", "Stable Diffusion, DALL-E, open-vocabulary detection", "Only retrieval", "Only captioning"], correct: 1, explanation: "CLIP's image-text alignment powers text-to-image generation, detection, and many other tasks." },
   ],
+  "io-vr-3": [
+    { question: "DINO's teacher network is updated via:", options: ["Backpropagation", "Exponential Moving Average of student", "Random resets", "Manual copying"], correct: 1, explanation: "Teacher = EMA of student: θ_teacher = m·θ_teacher + (1-m)·θ_student, with m close to 1." },
+    { question: "MAE's encoder only processes:", options: ["All patches", "Visible (unmasked) patches only", "Masked patches only", "Random subset"], correct: 1, explanation: "MAE encoder only sees the 25% visible patches, making pre-training very efficient." },
+    { question: "DINOv2 produces features useful for:", options: ["Only classification", "Many tasks without fine-tuning (universal features)", "Only detection", "Only segmentation"], correct: 1, explanation: "DINOv2 learns universal visual features that work well across tasks with simple linear probes." },
+    { question: "Self-supervised pre-training's main advantage:", options: ["Needs more labeled data", "Learns from unlabeled data at scale", "Faster than supervised", "Simpler models"], correct: 1, explanation: "Self-supervised methods leverage vast amounts of unlabeled data, which is much cheaper to collect." },
+    { question: "The InfoNCE loss in contrastive learning is related to:", options: ["MSE", "Mutual information lower bound", "KL divergence", "Hinge loss"], correct: 1, explanation: "InfoNCE is a lower bound on mutual information between positive pairs." },
+  ],
+
+  "io-ig-1": [
+    { question: "Stable Diffusion's U-Net denoiser uses cross-attention with:", options: ["Image features", "Text embeddings from CLIP", "Audio features", "Random noise"], correct: 1, explanation: "Text embeddings from CLIP's text encoder are injected via cross-attention into the U-Net." },
+    { question: "Classifier-free guidance scale > 1:", options: ["Reduces quality", "Increases text-image alignment at cost of diversity", "Has no effect", "Speeds up generation"], correct: 1, explanation: "Higher guidance scale = stronger text conditioning = more aligned but less diverse." },
+    { question: "ControlNet adds:", options: ["Text conditioning", "Spatial conditioning (edges, poses, depth)", "Audio conditioning", "Temporal conditioning"], correct: 1, explanation: "ControlNet adds spatial control signals (Canny edges, poses, depth maps) to diffusion models." },
+    { question: "Latent diffusion is faster than pixel diffusion because:", options: ["Simpler model", "Lower-dimensional latent space", "No U-Net", "No text conditioning"], correct: 1, explanation: "Operating in compressed latent space (e.g., 64×64 vs 512×512) dramatically reduces computation." },
+    { question: "DALL-E 2 generates images using:", options: ["GANs", "Diffusion model conditioned on CLIP embeddings", "Autoregressive model", "VAE only"], correct: 1, explanation: "DALL-E 2: CLIP text → CLIP image embedding (prior) → diffusion decoder → image." },
+  ],
+  "io-ig-2": [
+    { question: "pix2pix requires:", options: ["Unpaired data", "Paired input-output images", "Only input images", "Only output images"], correct: 1, explanation: "pix2pix needs paired training data: (input image, corresponding output image)." },
+    { question: "CycleGAN's key innovation for unpaired translation:", options: ["Larger GAN", "Cycle consistency loss", "More data", "Better discriminator"], correct: 1, explanation: "Cycle consistency: translate A→B→A should reconstruct A. Enables training without paired data." },
+    { question: "Super-resolution increases:", options: ["Color depth", "Spatial resolution of images", "Number of channels", "Batch size"], correct: 1, explanation: "Super-resolution upscales low-resolution images to higher resolution (e.g., 64×64 → 256×256)." },
+    { question: "ESRGAN stands for:", options: ["Enhanced Super-Resolution GAN", "Efficient SR Global Attention Net", "Extreme Scale Resolution Architecture", "Edge-Sensitive Reconstruction GAN"], correct: 0, explanation: "ESRGAN = Enhanced Super-Resolution GAN, producing photorealistic upscaled images." },
+    { question: "Neural style transfer combines:", options: ["Content of one image + style of another", "Two styles", "Two contents", "Random noise"], correct: 0, explanation: "Style transfer: content features from content image + Gram matrix style features from style image." },
+  ],
 
   // ═══ Section 4: NLP & Audio ═══
 
@@ -302,6 +440,13 @@ export const IOAI_EXERCISE_QUESTIONS: Record<string, Question[]> = {
     { question: "GloVe learns embeddings from:", options: ["Sequential text", "Global word co-occurrence statistics", "Parse trees", "Knowledge graphs"], correct: 1, explanation: "GloVe factorizes the log of the global word co-occurrence matrix." },
     { question: "Contextual embeddings differ from static because:", options: ["They're smaller", "Same word gets different embeddings based on context", "They're random", "They're one-hot"], correct: 1, explanation: "'bank' gets different embeddings in 'river bank' vs 'bank account' with contextual models." },
     { question: "FastText represents words as:", options: ["Single vectors", "Sum of character n-gram vectors", "One-hot vectors", "TF-IDF scores"], correct: 1, explanation: "FastText = sum of character n-gram embeddings, enabling embeddings for unseen words." },
+  ],
+  "io-tp-3": [
+    { question: "Sentence-BERT is fine-tuned for:", options: ["Translation", "Sentence similarity and retrieval", "NER", "Summarization"], correct: 1, explanation: "SBERT produces sentence embeddings optimized for cosine similarity comparison." },
+    { question: "Mean pooling over BERT token embeddings gives:", options: ["Word embedding", "Sentence embedding", "Document embedding", "Nothing useful"], correct: 1, explanation: "Averaging all token embeddings from BERT produces a simple sentence representation." },
+    { question: "Dense retrieval uses embeddings for:", options: ["Keyword matching", "Semantic similarity search", "Exact string matching", "Regex search"], correct: 1, explanation: "Dense retrieval encodes queries and documents into embeddings, matching by cosine similarity." },
+    { question: "Contrastive learning for sentence embeddings trains with:", options: ["Random pairs", "Positive/negative sentence pairs", "Single sentences", "Keywords"], correct: 1, explanation: "Train with (anchor, positive) pairs and hard negatives to learn discriminative sentence embeddings." },
+    { question: "The dimensionality of typical sentence embeddings is:", options: ["10-50", "100-1024", "10,000+", "1-5"], correct: 1, explanation: "Common dimensions: 384 (MiniLM), 768 (BERT-base), 1024 (BERT-large)." },
   ],
 
   "io-nt-1": [
@@ -341,6 +486,13 @@ export const IOAI_EXERCISE_QUESTIONS: Record<string, Question[]> = {
     { question: "DPO simplifies RLHF by:", options: ["Adding more steps", "Eliminating the reward model", "Using more human feedback", "Training longer"], correct: 1, explanation: "DPO directly optimizes from preference pairs without training a separate reward model." },
     { question: "QLoRA combines LoRA with:", options: ["Pruning", "4-bit quantization", "Distillation", "Data augmentation"], correct: 1, explanation: "QLoRA = LoRA + 4-bit NormalFloat quantization of base model, enabling fine-tuning on consumer GPUs." },
   ],
+  "io-lm-3": [
+    { question: "Perplexity measures:", options: ["Speed", "How surprised the model is by test data (lower = better)", "Number of parameters", "Vocabulary size"], correct: 1, explanation: "Perplexity = exp(avg CE loss). Lower perplexity = model better predicts the data." },
+    { question: "BERTScore uses:", options: ["Exact string match", "Contextual embedding similarity", "Edit distance", "n-gram overlap"], correct: 1, explanation: "BERTScore computes similarity between BERT embeddings of prediction and reference tokens." },
+    { question: "MMLU benchmark tests:", options: ["Image generation", "Multi-task language understanding across 57 subjects", "Translation only", "Code generation"], correct: 1, explanation: "MMLU tests knowledge across 57 academic subjects from STEM to humanities." },
+    { question: "Constitutional AI (CAI) trains models to be:", options: ["Faster", "Helpful, harmless, and honest", "Larger", "More creative"], correct: 1, explanation: "CAI uses a set of principles (constitution) to train models that are helpful and safe." },
+    { question: "Hallucination in LLMs refers to:", options: ["Speed issues", "Generating plausible but factually incorrect content", "Memory leaks", "Token limits"], correct: 1, explanation: "Hallucination: model confidently generates false information that sounds convincing." },
+  ],
 
   // Audio
   "io-au-1": [
@@ -357,6 +509,13 @@ export const IOAI_EXERCISE_QUESTIONS: Record<string, Question[]> = {
     { question: "A vocoder converts:", options: ["Text to mel-spectrogram", "Mel-spectrogram to waveform", "Audio to text", "MIDI to audio"], correct: 1, explanation: "Vocoder (e.g., HiFi-GAN) converts mel-spectrograms into audio waveforms." },
     { question: "WaveNet generates audio:", options: ["All at once", "Sample by sample autoregressively", "In frequency domain", "Using RNNs"], correct: 1, explanation: "WaveNet generates audio samples one at a time, conditioning on all previous samples." },
   ],
+  "io-au-3": [
+    { question: "AudioLM generates audio using:", options: ["CNNs", "Hierarchical token-based language modeling", "GANs only", "Rule-based synthesis"], correct: 1, explanation: "AudioLM models audio as tokens at multiple levels (semantic + acoustic) and generates autoregressively." },
+    { question: "MusicGen by Meta generates music from:", options: ["MIDI files", "Text descriptions", "Audio recordings only", "Sheet music"], correct: 1, explanation: "MusicGen generates music conditioned on text descriptions using a Transformer-based model." },
+    { question: "Audio diffusion models generate:", options: ["Text", "Audio/music by denoising spectrograms", "Images", "Video"], correct: 1, explanation: "Audio diffusion: denoise mel-spectrograms or latent audio representations to generate sound." },
+    { question: "MIDI represents music as:", options: ["Waveforms", "Symbolic events (notes, velocities, timings)", "Spectrograms", "Text"], correct: 1, explanation: "MIDI is symbolic: note on/off events with pitch, velocity, timing — not actual audio." },
+    { question: "Voice cloning requires:", options: ["Hours of training data", "A few seconds of reference audio (modern methods)", "No audio", "Only text"], correct: 1, explanation: "Modern TTS systems (VALL-E, XTTS) can clone a voice from just a few seconds of reference audio." },
+  ],
 
   // Multimodal
   "io-mm-1": [
@@ -372,5 +531,12 @@ export const IOAI_EXERCISE_QUESTIONS: Record<string, Question[]> = {
     { question: "CIDEr metric for captioning measures:", options: ["Grammar", "Consensus with reference captions using TF-IDF", "Image quality", "Speed"], correct: 1, explanation: "CIDEr uses TF-IDF weighted n-gram matching against multiple reference captions." },
     { question: "Audio-visual learning exploits:", options: ["Only visual data", "Natural correspondence between sight and sound", "Text annotations", "Manual alignment"], correct: 1, explanation: "Audio-visual learning leverages the natural co-occurrence of visual and audio signals in video." },
     { question: "Flamingo by DeepMind enables:", options: ["Only classification", "Few-shot multimodal learning with interleaved image-text", "Image generation", "Audio processing"], correct: 1, explanation: "Flamingo processes arbitrarily interleaved images and text for few-shot multimodal tasks." },
+  ],
+  "io-mm-3": [
+    { question: "Text-to-image retrieval uses:", options: ["Keyword matching", "Shared embedding space similarity", "OCR", "Template matching"], correct: 1, explanation: "Encode text query and database images into shared space, retrieve by cosine similarity." },
+    { question: "Image-to-text retrieval finds:", options: ["Similar images", "Text descriptions matching the query image", "Keywords", "File names"], correct: 1, explanation: "Given a query image, find the most relevant text descriptions using shared embeddings." },
+    { question: "ALIGN by Google trained CLIP-like model on:", options: ["1M pairs", "1.8B noisy image-text pairs", "ImageNet", "Wikipedia"], correct: 1, explanation: "ALIGN showed that scaling to 1.8B noisy pairs (no cleaning) matches or beats smaller curated datasets." },
+    { question: "Hard negative mining in retrieval:", options: ["Removes easy examples", "Selects challenging negatives that are close to the query", "Random sampling", "Ignores negatives"], correct: 1, explanation: "Hard negatives (similar but wrong matches) force the model to learn finer-grained distinctions." },
+    { question: "Re-ranking in retrieval:", options: ["Replaces initial retrieval", "Refines top-k results with a more powerful model", "Removes results", "Adds random results"], correct: 1, explanation: "Two-stage: fast retrieval gets top-k candidates, then a heavier cross-encoder re-ranks them." },
   ],
 };
