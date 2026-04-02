@@ -7,10 +7,22 @@ import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { ALL_EXERCISES } from "@/data/roadmapData";
+import { IOAI_ROADMAP_STAGES } from "@/data/ioaiRoadmapData";
 import { EXERCISE_QUESTIONS } from "@/data/exerciseQuestions";
+import { IOAI_EXERCISE_QUESTIONS } from "@/data/ioaiExerciseQuestions";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/contexts/AuthContext";
 import { useToast } from "@/hooks/use-toast";
+
+const IOAI_ALL_EXERCISES = IOAI_ROADMAP_STAGES.flatMap(stage =>
+  stage.nodes.flatMap(node => node.exercises)
+);
+
+const COMBINED_EXERCISES = [...ALL_EXERCISES, ...IOAI_ALL_EXERCISES];
+const COMBINED_QUESTIONS: Record<string, { question: string; options: string[]; correct: number; explanation: string }[]> = {
+  ...EXERCISE_QUESTIONS,
+  ...IOAI_EXERCISE_QUESTIONS,
+};
 
 const TIMER_SECONDS = 30;
 
@@ -20,8 +32,8 @@ const RoadmapExercise = () => {
   const { user, refreshProfile } = useAuth();
   const { toast } = useToast();
 
-  const exercise = ALL_EXERCISES.find(e => e.id === exerciseId);
-  const questions = exerciseId ? EXERCISE_QUESTIONS[exerciseId] ?? [] : [];
+  const exercise = COMBINED_EXERCISES.find(e => e.id === exerciseId);
+  const questions = exerciseId ? COMBINED_QUESTIONS[exerciseId] ?? [] : [];
 
   const [currentQ, setCurrentQ] = useState(0);
   const [selected, setSelected] = useState<number | null>(null);
@@ -65,7 +77,6 @@ const RoadmapExercise = () => {
     if (!user || !exercise) return;
     const xpEarned = Math.round((score / questions.length) * exercise.xpReward);
     
-    // Save exercise progress
     await supabase.from("exercise_progress").upsert({
       user_id: user.id,
       exercise_id: exercise.id,
@@ -75,7 +86,6 @@ const RoadmapExercise = () => {
       completed_at: new Date().toISOString(),
     }, { onConflict: "user_id,exercise_id" });
 
-    // Update user XP in profile
     const { data: profile } = await supabase
       .from("profiles")
       .select("xp")
