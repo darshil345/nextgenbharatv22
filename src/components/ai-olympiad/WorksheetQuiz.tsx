@@ -17,7 +17,8 @@ interface WorksheetQuizProps {
 }
 
 const WorksheetQuiz = ({ worksheet, onBack }: WorksheetQuizProps) => {
-  const questionSet = WORKSHEET_QUESTIONS.find(q => q.worksheetId === worksheet.id);
+  const questionSet = WORKSHEET_QUESTIONS.find(q => q.worksheetId === worksheet.id)
+    || IOAI_WORKSHEET_QUESTIONS.find(q => q.worksheetId === worksheet.id);
   const questions = questionSet?.questions || [];
 
   const [currentQ, setCurrentQ] = useState(0);
