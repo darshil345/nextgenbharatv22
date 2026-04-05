@@ -1,80 +1,241 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NextGen Bharat</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>NextGen Bharat AI</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
   <style>
-    body {
+    * {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #0f172a, #1e293b);
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: #020617;
       color: white;
+      overflow-x: hidden;
+    }
+
+    /* NAVBAR */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px 60px;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      background: rgba(2,6,23,0.7);
+      backdrop-filter: blur(12px);
+      z-index: 1000;
+    }
+
+    nav h2 {
+      font-weight: 700;
+      letter-spacing: 1px;
+      background: linear-gradient(90deg, #38bdf8, #22c55e);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    nav a {
+      color: #cbd5e1;
+      margin-left: 25px;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      color: white;
+    }
+
+    /* HERO */
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 0 20px;
+      text-align: center;
+      background: radial-gradient(circle at top, #0f172a, #020617);
+    }
+
+    .hero h1 {
+      font-size: 3.8rem;
+      max-width: 900px;
+      line-height: 1.2;
+    }
+
+    .gradient {
+      background: linear-gradient(90deg, #38bdf8, #22c55e);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      color: #94a3b8;
+      max-width: 650px;
+    }
+
+    .buttons {
+      margin-top: 30px;
+    }
+
+    .btn {
+      padding: 14px 30px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      margin: 10px;
+      display: inline-block;
+      transition: 0.2s;
+    }
+
+    .primary {
+      background: linear-gradient(90deg, #38bdf8, #22c55e);
+      color: black;
+    }
+
+    .secondary {
+      border: 1px solid #334155;
+      color: #cbd5e1;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    /* FEATURES */
+    .features {
+      padding: 100px 20px;
       text-align: center;
     }
-    header {
-      padding: 60px 20px;
+
+    .features h2 {
+      font-size: 2.5rem;
+      margin-bottom: 40px;
     }
-    h1 {
-      font-size: 3rem;
+
+    .cards {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 25px;
+    }
+
+    .card {
+      background: linear-gradient(145deg, #0f172a, #020617);
+      padding: 30px;
+      width: 280px;
+      border-radius: 18px;
+      border: 1px solid #1e293b;
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      border-color: #38bdf8;
+      box-shadow: 0 0 30px rgba(56,189,248,0.2);
+    }
+
+    .card h3 {
       margin-bottom: 10px;
     }
-    p {
-      color: #cbd5e1;
-      font-size: 1.2rem;
-    }
-    .btn {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 12px 25px;
-      background: #22c55e;
-      color: white;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .btn:hover {
-      background: #16a34a;
-    }
-    footer {
-      margin-top: 60px;
-      padding: 20px;
+
+    .card p {
       color: #94a3b8;
     }
+
+    /* CTA */
+    .cta {
+      padding: 100px 20px;
+      text-align: center;
+    }
+
+    .cta h2 {
+      font-size: 2.5rem;
+    }
+
+    /* FOOTER */
+    footer {
+      padding: 40px;
+      text-align: center;
+      color: #64748b;
+      border-top: 1px solid #1e293b;
+    }
+
   </style>
 </head>
+
 <body>
 
-<header>
-  <h1>NextGen Bharat 🇮🇳</h1>
-  <p>Empowering Students with AI & Innovation</p>
-  <a href="#about" class="btn">Explore</a>
-</header>
+<!-- NAV -->
+<nav>
+  <h2>NextGen Bharat</h2>
+  <div>
+    <a href="#">Home</a>
+    <a href="#features">Features</a>
+    <a href="https://nextgenbharatv2.lovable.app">App</a>
+  </div>
+</nav>
 
-<section id="about">
-  <h2>About</h2>
+<!-- HERO -->
+<section class="hero">
+  <h1>
+    India’s Future Powered by <span class="gradient">AI Skills</span>
+  </h1>
+
   <p>
-    NextGen Bharat is a platform built to help students develop
-    AI skills, innovation mindset, and future-ready thinking.
+    NextGen Bharat equips students with real-world AI skills, innovation mindset,
+    and tools to build the future.
   </p>
+
+  <div class="buttons">
+    <a href="https://nextgenbharatv2.lovable.app" class="btn primary">Launch Platform</a>
+    <a href="#features" class="btn secondary">Learn More</a>
+  </div>
 </section>
 
-<section>
-  <h2>Features</h2>
-  <p>✔ AI Learning Tools</p>
-  <p>✔ Student Innovation Hub</p>
-  <p>✔ Interactive Simulations</p>
+<!-- FEATURES -->
+<section class="features" id="features">
+  <h2>Why NextGen Bharat?</h2>
+
+  <div class="cards">
+    <div class="card">
+      <h3>AI Learning</h3>
+      <p>Hands-on AI tools designed for students.</p>
+    </div>
+
+    <div class="card">
+      <h3>Real Projects</h3>
+      <p>Build real-world solutions and portfolios.</p>
+    </div>
+
+    <div class="card">
+      <h3>Future Ready</h3>
+      <p>Develop skills needed for tomorrow’s world.</p>
+    </div>
+  </div>
 </section>
 
-<section>
-  <h2>Live App</h2>
-  <a href="https://nextgenbharatv2.lovable.app" class="btn">
-    Visit Full App
-  </a>
+<!-- CTA -->
+<section class="cta">
+  <h2>Start Building the Future Today 🚀</h2>
+  <div class="buttons">
+    <a href="https://nextgenbharatv2.lovable.app" class="btn primary">Get Started</a>
+  </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
-  <p>© 2026 NextGen Bharat</p>
+  © 2026 NextGen Bharat • Built by Darshil 🇮🇳
 </footer>
 
 </body>
